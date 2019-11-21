@@ -4,35 +4,25 @@ using UnityEngine;
 
 public class ControlPanelInputs : MonoBehaviour
 {
-    string key1;
-    string key2;
-    public bool bLocked;
+    public static ControlPanelInputs instance;
+    public Keybindings keybindings;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        
+        if (instance == null) instance = this;
+        else if (instance != this) Destroy(this);
+        DontDestroyOnLoad(this);
     }
 
-    // Update is called once per frame
-    void Update()
+    public bool Key(string key)
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-
-        }
+        if (Input.GetKey(keybindings.CheckKey(key))) return true;
+        else return false;
     }
-    void OnGUI()
-    {
-        if (Event.current.isKey && Event.current.type == EventType.KeyDown)
-        {
-            key1 = Event.current.keyCode.ToString();
 
-            if (Event.current.isKey && Event.current.type == EventType.KeyDown && bLocked)
-            {
-                key2 = Event.current.keyCode.ToString();
-                Debug.Log("Target is " + key1 + key2);
-            }
-        }
+    public bool KeyDown(string key)
+    {
+        if (Input.GetKeyDown(keybindings.CheckKey(key))) return true;
+        else return false;
     }
 }
