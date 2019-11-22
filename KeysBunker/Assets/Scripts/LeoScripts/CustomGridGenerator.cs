@@ -10,6 +10,8 @@ public class CustomGridGenerator : MonoBehaviour
     public float x_Space, y_Space;
     public GameObject prefab;
     [SerializeField] List<GameObject> TileList = new List<GameObject>();
+    [ShowInInspector] public Vector3 targetTilePosition;
+    public static bool fireMissile = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,131 +31,131 @@ public class CustomGridGenerator : MonoBehaviour
         if (ControlPanelInputs.instance.KeyDown("A0"))
             foreach (GameObject item in TileList)
                 if (item.name == "A0")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("A1"))
             foreach (GameObject item in TileList)
                 if (item.name == "A1")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("A2"))
             foreach (GameObject item in TileList)
                 if (item.name == "A2")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("A3"))
             foreach (GameObject item in TileList)
                 if (item.name == "A3")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("A4"))
             foreach (GameObject item in TileList)
                 if (item.name == "A4")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         //////////////////////////////////////////////////////////////////
         if (ControlPanelInputs.instance.KeyDown("B0"))
             foreach (GameObject item in TileList)
                 if (item.name == "B0")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("B1"))
             foreach (GameObject item in TileList)
                 if (item.name == "B1")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("B2"))
             foreach (GameObject item in TileList)
                 if (item.name == "B2")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("B3"))
             foreach (GameObject item in TileList)
                 if (item.name == "B3")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("B4"))
             foreach (GameObject item in TileList)
                 if (item.name == "B4")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         //////////////////////////////////////////////////////////////////
         if (ControlPanelInputs.instance.KeyDown("C0"))
             foreach (GameObject item in TileList)
                 if (item.name == "C0")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("C1"))
             foreach (GameObject item in TileList)
                 if (item.name == "C1")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("C2"))
             foreach (GameObject item in TileList)
                 if (item.name == "C2")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("C3"))
             foreach (GameObject item in TileList)
                 if (item.name == "C3")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("C4"))
             foreach (GameObject item in TileList)
                 if (item.name == "C4")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         //////////////////////////////////////////////////////////////////
         if (ControlPanelInputs.instance.KeyDown("D0"))
             foreach (GameObject item in TileList)
                 if (item.name == "D0")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("D1"))
             foreach (GameObject item in TileList)
                 if (item.name == "D1")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("D2"))
             foreach (GameObject item in TileList)
                 if (item.name == "D2")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("D3"))
             foreach (GameObject item in TileList)
                 if (item.name == "D3")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("D4"))
             foreach (GameObject item in TileList)
                 if (item.name == "D4")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         //////////////////////////////////////////////////////////////////
         if (ControlPanelInputs.instance.KeyDown("E0"))
             foreach (GameObject item in TileList)
                 if (item.name == "E0")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("E1"))
             foreach (GameObject item in TileList)
                 if (item.name == "E1")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("E2"))
             foreach (GameObject item in TileList)
                 if (item.name == "E2")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("E3"))
             foreach (GameObject item in TileList)
                 if (item.name == "E3")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
 
         if (ControlPanelInputs.instance.KeyDown("E4"))
             foreach (GameObject item in TileList)
                 if (item.name == "E4")
-                    Debug.Log("found 'im at " + item.transform.position);
+                    {targetTilePosition = item.transform.position; fireMissile = true;}
     }
 
     void GenerateGrid()
