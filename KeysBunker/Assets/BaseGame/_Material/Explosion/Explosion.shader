@@ -47,7 +47,7 @@ Shader "Custom/Explosion"
 				o.pos = UnityObjectToClipPos(v.vertex);
 				o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
 				o.uv1 = TRANSFORM_TEX(v.texcoord, _DissolveTex);
-				o.uv *= sin(1.0 * _Time.w * o.uv ) + 1;
+				o.uv *= sin( _Time.w * o.uv + o.uv ) + 1;
 				return o;
 			}
 
@@ -62,14 +62,12 @@ Shader "Custom/Explosion"
 					col.a = 0;
 					return col;
 				}
-				//else
-				//{ }
 
 				col.a *= sin(_Frequency * 100.0 * _Time.w);
 				float glitchTiming = sin(_Frequency * 100.0 * _Time.w);
 
 				col = step(glitchTiming, col * glitch * -1.0);
-                return col * glitch * 3.0 * _Color;
+                return col * glitch * 2.0 * _Color;
 
             }
             ENDCG

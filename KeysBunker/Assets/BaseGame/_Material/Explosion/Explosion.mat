@@ -36,7 +36,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DissolveTex:
-        m_Texture: {fileID: 2800000, guid: dcb1a3535beaad444bc117dae02a431c, type: 3}
+        m_Texture: {fileID: 2800000, guid: eb3feefd835775241a204200cc0c3a96, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionMap:
@@ -45,11 +45,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _GlitchTex:
         m_Texture: {fileID: 2800000, guid: 6a893d32f3bed9645ba9994b2dd7f030, type: 3}
-        m_Scale: {x: 0.89, y: 0.7}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 1.2, y: 0.14}
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 0.47, y: 0.4}
+        m_Texture: {fileID: 2800000, guid: 3dfc1c553586c244b85b1f7370d76a2b, type: 3}
+        m_Scale: {x: 0.1, y: 0.3}
         m_Offset: {x: 0.33, y: 0.2}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}

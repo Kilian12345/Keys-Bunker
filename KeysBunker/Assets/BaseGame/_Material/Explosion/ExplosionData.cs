@@ -10,6 +10,9 @@ public class ExplosionData : MonoBehaviour
     private Renderer _renderer;
     private MaterialPropertyBlock _propBlock;
 
+    public float timeGlitch;
+    public bool IsExplosion;
+
     void Awake()
     {
         _propBlock = new MaterialPropertyBlock();
@@ -25,5 +28,21 @@ public class ExplosionData : MonoBehaviour
         _propBlock.SetColor("_Color", Color);
         // Apply the edited values to the renderer.
         _renderer.SetPropertyBlock(_propBlock);
+
+        if(IsExplosion == true)
+        {
+            Cutoff = 1;
+        }
+
+        if(Cutoff > -0.1f)
+        {
+            Cutoff -= timeGlitch;
+            IsExplosion = false;
+        }
+
+
     }
+
+
+    
 }
