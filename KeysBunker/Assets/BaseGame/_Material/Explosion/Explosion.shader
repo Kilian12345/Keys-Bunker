@@ -13,8 +13,9 @@ Shader "Custom/Explosion"
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
-		Blend SrcAlpha OneMinusSrcAlpha
+        Tags { "Queue" = "Transparent" "RenderType"="Opaque" }
+		Cull Off
+		Blend One OneMinusSrcAlpha
         LOD 100
 
         Pass
@@ -45,7 +46,8 @@ Shader "Custom/Explosion"
 			v2f vert(appdata_base v) {
 				v2f o;
 				o.pos = UnityObjectToClipPos(v.vertex);
-				o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
+				//o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
+				o.uv = v.texcoord;
 				o.uv1 = TRANSFORM_TEX(v.texcoord, _DissolveTex);
 				o.uv *= sin( _Time.w * o.uv + o.uv ) + 1;
 				return o;
@@ -67,6 +69,10 @@ Shader "Custom/Explosion"
 				float glitchTiming = sin(_Frequency * 100.0 * _Time.w);
 
 				col = step(glitchTiming, col * glitch * -1.0);
+
+				col.rgb *= col.a;
+				glitch.rgb *= glitch.a;
+
                 return col * glitch * 2.0 * _Color;
 
             }
