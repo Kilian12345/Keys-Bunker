@@ -169,6 +169,9 @@ public class CustomGridGenerator : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D)) listPosition += columnLength;
         if (Input.GetKeyDown(KeyCode.Z)) listPosition -= 1;
         if (Input.GetKeyDown(KeyCode.S)) listPosition +=1;
+
+        if (listPosition > TileList.Count) listPosition = 0;
+        if (listPosition < 0) listPosition = TileList.Count-1;
     }
 
     void TargetTilePosition()
