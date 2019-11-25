@@ -16,20 +16,37 @@ public class TrailerMissilesScenery : MonoBehaviour
 
     public List<GameObject> mohawks;
 
+    private List<GameObject> destroyList = new List<GameObject>();
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            if (destroyList != null)
+            {
+                foreach (GameObject obj in destroyList) Destroy(obj);
+            }
+
             LaunchMissile(0);
         }
 
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            if (destroyList != null)
+            {
+                foreach (GameObject obj in destroyList) Destroy(obj);
+            }
+
             LaunchMissile(1);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (destroyList != null)
+            {
+                foreach (GameObject obj in destroyList) Destroy(obj);
+            }
+
             LaunchMissile(2);
         }
 
@@ -59,6 +76,9 @@ public class TrailerMissilesScenery : MonoBehaviour
                 );
 
             currentPath.GetComponentInChildren<PathFollow>().missile = currentMissile.transform;
+
+            destroyList.Add(currentMissile);
+            destroyList.Add(currentPath);
         }
     }
 
