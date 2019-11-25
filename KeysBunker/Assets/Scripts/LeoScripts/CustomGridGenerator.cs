@@ -10,6 +10,8 @@ public class CustomGridGenerator : MonoBehaviour
     public float x_Space, y_Space;
     public GameObject prefab;
     public GameObject prefab2;
+    public GameObject prefab3;
+    GameObject yeet;
     [SerializeField] List<GameObject> TileList = new List<GameObject>();
     public int listPosition = 0;
     [ShowInInspector] public Vector3 targetTilePosition;
@@ -19,6 +21,7 @@ public class CustomGridGenerator : MonoBehaviour
     void Start()
     {
         GenerateGrid();
+        yeet = Instantiate(prefab3, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -162,16 +165,39 @@ public class CustomGridGenerator : MonoBehaviour
                 if (item.name == "E4")
                 { targetTilePosition = item.transform.position; fireMissile = true; }
     }
-    
+
     void MoveOnGrid()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) listPosition -= columnLength;
-        if (Input.GetKeyDown(KeyCode.D)) listPosition += columnLength;
-        if (Input.GetKeyDown(KeyCode.Z)) listPosition -= 1;
-        if (Input.GetKeyDown(KeyCode.S)) listPosition +=1;
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Destroy(yeet);
+            listPosition -= columnLength;
+            yeet = Instantiate(prefab3, TileList[listPosition].transform.position, Quaternion.identity);
+        }
+    
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            Destroy(yeet);
+            listPosition += columnLength;
+            yeet = Instantiate(prefab3, TileList[listPosition].transform.position, Quaternion.identity);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Destroy(yeet);
+            listPosition -= 1;
+            yeet = Instantiate(prefab3, TileList[listPosition].transform.position, Quaternion.identity);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            Destroy(yeet);
+            listPosition += 1;
+            yeet = Instantiate(prefab3, TileList[listPosition].transform.position, Quaternion.identity);
+        }
 
         if (listPosition > TileList.Count) listPosition = 0;
-        if (listPosition < 0) listPosition = TileList.Count-1;
+        if (listPosition < 0) listPosition = TileList.Count - 1;
     }
 
     void TargetTilePosition()

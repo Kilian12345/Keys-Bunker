@@ -349,9 +349,9 @@ MonoBehaviour:
   y_Space: 1.05
   prefab: {fileID: 8795455149576147668, guid: c490683bf9166a741abeaeace182b0d5, type: 3}
   prefab2: {fileID: 8795455149576147668, guid: cd641cfb11c092343872939044a5b715, type: 3}
+  prefab3: {fileID: 8795455149576147668, guid: c59fabc112f2ff54c952b197225057b1, type: 3}
   TileList: []
   listPosition: 0
-  timeBeforeDestroy: 1
   targetTilePosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1656008458
 GameObject:
