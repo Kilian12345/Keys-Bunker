@@ -152,21 +152,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneryStocks:
   - missiles:
-    - {fileID: 6316413864157693582, guid: 4aff5132ced8fa549b757839a0e3bbed, type: 3}
+    - {fileID: 3975362277192242733, guid: 1b921236ba10cb94492005bb37877b3e, type: 3}
     paths:
-    - {fileID: 617095593988093717, guid: 38d6242f1ef6a044a9d66f77f3ac9fe1, type: 3}
+    - {fileID: 355424920736676498, guid: f5e0109813dac7b4eacdb2ec2f47bb8b, type: 3}
   - missiles:
-    - {fileID: 3691422478496633961, guid: b2ba9f84210b695459c1848b239ee44e, type: 3}
+    - {fileID: 3975362277192242733, guid: 1b921236ba10cb94492005bb37877b3e, type: 3}
     paths:
-    - {fileID: 940673078894711049, guid: a675eeee773081446b3f6e21c08704ff, type: 3}
+    - {fileID: 2351112871896828220, guid: 796702e644641374581810fd5583e170, type: 3}
   - missiles:
-    - {fileID: 3691422478496633961, guid: b2ba9f84210b695459c1848b239ee44e, type: 3}
-    - {fileID: 1464712465876894439, guid: 8b29fef0ded0ff84bb460f93a09c6129, type: 3}
+    - {fileID: 3975362277192242733, guid: 1b921236ba10cb94492005bb37877b3e, type: 3}
     paths:
-    - {fileID: 1199892141489226894, guid: 55def356e85b380499f86d560d597985, type: 3}
-    - {fileID: 3662688540105932938, guid: 1e47dacadc834cc4b853b5535e179e65, type: 3}
-    - {fileID: 2085413687463970902, guid: 5a66c8cf5c7236d49aa74e0322cddb5a, type: 3}
-    - {fileID: 7920120225694981264, guid: 7c86be7216b1d454080927039d844c94, type: 3}
+    - {fileID: 4979140175786198638, guid: b1dd54a55cab8624685259f9d9f62e2a, type: 3}
+    - {fileID: 4174402673517721842, guid: fd3fe8ababfd22840b6ed4cf1137ddac, type: 3}
+    - {fileID: 6315053304574511605, guid: e94148a9e67e05f40b1239b4edc47bf2, type: 3}
+    - {fileID: 7241928447755706118, guid: 1703bdcdec6e0f54cae1abde1b623246, type: 3}
   mohawks:
   - {fileID: 3935128465949360363, guid: 7ad036578ed811a4b8cc66e035a1e424, type: 3}
   - {fileID: 5413028105525596258, guid: f0726cd22705595468ed27f3c4f79c76, type: 3}
@@ -322,7 +321,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.12028304, g: 0.16037738, b: 0.14253613, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
