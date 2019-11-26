@@ -18,6 +18,9 @@ public class TrailerMissilesScenery : MonoBehaviour
 
     private List<GameObject> destroyList = new List<GameObject>();
 
+    public GameObject targetTile;
+    private GameObject tileFilled;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -48,6 +51,13 @@ public class TrailerMissilesScenery : MonoBehaviour
             }
 
             LaunchMissile(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (tileFilled == null) tileFilled = Instantiate(targetTile, new Vector3(0f, -15.87f, 0f), Quaternion.identity);
+
+            else Destroy(tileFilled);
         }
 
         /// \\\

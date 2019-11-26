@@ -17,7 +17,7 @@ public class MissileMovement : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftAlt))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             Vector3 dir = Quaternion.AngleAxis(transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
             rb.AddForce(dir * thrust);

@@ -129,7 +129,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 184189516}
-  - component: {fileID: 184189515}
   - component: {fileID: 184189514}
   m_Layer: 0
   m_Name: Game Manager
@@ -169,28 +168,8 @@ MonoBehaviour:
   mohawks:
   - {fileID: 3935128465949360363, guid: 7ad036578ed811a4b8cc66e035a1e424, type: 3}
   - {fileID: 5413028105525596258, guid: f0726cd22705595468ed27f3c4f79c76, type: 3}
---- !u!114 &184189515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 184189513}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0b714ad43db7d44b8fc3c38786583bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  missiles:
-  - {fileID: 3691422478496633961, guid: b2ba9f84210b695459c1848b239ee44e, type: 3}
-  - {fileID: 6316413864157693582, guid: 4aff5132ced8fa549b757839a0e3bbed, type: 3}
-  - {fileID: 3893412099884606922, guid: 106b7f1f2d079d74e899e22c96b097fc, type: 3}
-  - {fileID: 1464712465876894439, guid: 8b29fef0ded0ff84bb460f93a09c6129, type: 3}
-  paths:
-  - {fileID: 1199892141489226894, guid: 55def356e85b380499f86d560d597985, type: 3}
-  - {fileID: 3662688540105932938, guid: 1e47dacadc834cc4b853b5535e179e65, type: 3}
-  - {fileID: 2085413687463970902, guid: 5a66c8cf5c7236d49aa74e0322cddb5a, type: 3}
-  - {fileID: 7920120225694981264, guid: 7c86be7216b1d454080927039d844c94, type: 3}
+  targetTile: {fileID: 8678693279802661574, guid: 376c6422effe2dc46bc7adacd8149a20,
+    type: 3}
 --- !u!4 &184189516
 Transform:
   m_ObjectHideFlags: 0
@@ -203,7 +182,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &509216563
 GameObject:
@@ -343,7 +322,7 @@ GameObject:
   - component: {fileID: 1100924681}
   - component: {fileID: 1100924680}
   m_Layer: 0
-  m_Name: "barres potentiom\xE8tre complet"
+  m_Name: "Barres de Vis\xE9e"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -410,7 +389,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1365191016
 GameObject:
@@ -608,7 +587,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steer: 1
   thrust: 5
-  particles: {fileID: 0}
+  particles: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
+    type: 3}
 --- !u!50 &2016721307
 Rigidbody2D:
   serializedVersion: 4
