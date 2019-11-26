@@ -51,7 +51,7 @@ public class TrailerMissilesScenery : MonoBehaviour
         }
 
         /// \\\
-
+        /*
         if (Input.GetButtonDown("Fire1"))
         {
             CounterMeasure(0);
@@ -61,6 +61,7 @@ public class TrailerMissilesScenery : MonoBehaviour
         {
             CounterMeasure(1);
         }
+        */
     }
 
     void LaunchMissile(int currentScenery)

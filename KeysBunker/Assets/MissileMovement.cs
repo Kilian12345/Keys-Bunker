@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissileController : MonoBehaviour
+public class MissileMovement : MonoBehaviour
 {
     public float steer;
     public float thrust;
@@ -15,12 +15,11 @@ public class MissileController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    
     void Update()
     {
         if (Input.GetKey(KeyCode.LeftAlt))
         {
-            Vector3 dir = Quaternion.AngleAxis(transform.eulerAngles.z+90, Vector3.forward) * Vector3.right;
+            Vector3 dir = Quaternion.AngleAxis(transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
             rb.AddForce(dir * thrust);
         }
 

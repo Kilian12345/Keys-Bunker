@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missile: {fileID: 0}
-  movingSpeed: 2
+  movingSpeed: 3
 --- !u!1 &1199892141357304485
 GameObject:
   m_ObjectHideFlags: 0
