@@ -23,6 +23,16 @@ public class MissileMovement : MonoBehaviour
             rb.AddForce(dir * thrust);
         }
 
+        transform.Rotate(Vector3.forward * -steer * (Input.GetAxis("Horizontal")));
+
+        /*
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GameObject explosive = Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(explosive, 2f);
+            rb.velocity = Vector3.zero;
+        }
+        */
         /*if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.forward * steer);
@@ -31,14 +41,15 @@ public class MissileMovement : MonoBehaviour
         {
             transform.Rotate(-Vector3.forward * steer);
         }*/
+    }
 
-        transform.Rotate(Vector3.forward * -steer * (Input.GetAxis("Horizontal")));
+    void OnTriggerEnter2D()
+    {
+        GameObject explosive = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(explosive, 2f);
+        rb.velocity = Vector3.zero;
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            GameObject explosive = Instantiate(particles, transform.position, Quaternion.identity);
-            Destroy(explosive, 2f);
-            rb.velocity = Vector3.zero;
-        }
+        Instantiate(gameObject, new Vector3(0, 0, 0), Quaternion.identity);
+        Destroy(this.gameObject);
     }
 }

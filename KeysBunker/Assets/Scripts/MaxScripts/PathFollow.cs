@@ -22,6 +22,13 @@ public class PathFollow : MonoBehaviour
 
     void Update()
     {
+        if (missile != null) Follow();
+
+        else Destroy(transform.parent.gameObject);
+    }
+
+    void Follow()
+    {
         timer += Time.deltaTime * movingSpeed;
 
         if (missile.transform.position != targetedPosition)
