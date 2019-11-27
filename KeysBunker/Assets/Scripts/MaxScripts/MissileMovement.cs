@@ -25,14 +25,12 @@ public class MissileMovement : MonoBehaviour
 
         transform.Rotate(Vector3.forward * -steer * (Input.GetAxis("Horizontal")));
 
-        /*
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject explosive = Instantiate(particles, transform.position, Quaternion.identity);
-            Destroy(explosive, 2f);
-            rb.velocity = Vector3.zero;
+            DestroyRespawn();
         }
-        */
+        
         /*if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.forward * steer);
@@ -44,6 +42,11 @@ public class MissileMovement : MonoBehaviour
     }
 
     void OnTriggerEnter2D()
+    {
+        DestroyRespawn();
+    }
+
+    void DestroyRespawn()
     {
         GameObject explosive = Instantiate(particles, transform.position, Quaternion.identity);
         Destroy(explosive, 2f);
