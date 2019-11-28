@@ -31,7 +31,7 @@ public class CustomGridGenerator : MonoBehaviour
     void Update()
     {
         //CheckInputs();
-        MoveOnGrid();
+        //MoveOnGrid();
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
