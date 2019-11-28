@@ -11,6 +11,7 @@ public class CustomGridGenerator : MonoBehaviour
     public GameObject prefab;
     public GameObject targetSight;
     public GameObject targetTile;
+    private GameObject currentTargetTile;
     GameObject yeet;
     [SerializeField] List<GameObject> TileList = new List<GameObject>();
     public int listPosition = 0;
@@ -32,7 +33,12 @@ public class CustomGridGenerator : MonoBehaviour
         //CheckInputs();
         MoveOnGrid();
 
-        if (Input.GetKeyDown(KeyCode.Space)) TargetTilePosition();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentTargetTile == null) TargetTilePosition();
+
+            else Destroy(currentTargetTile);
+        }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -230,7 +236,7 @@ public class CustomGridGenerator : MonoBehaviour
 
     void TargetTilePosition()
     {
-        Instantiate(targetTile, TileList[listPosition].transform.position, Quaternion.identity);
+        currentTargetTile = Instantiate(targetTile, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     void GenerateGrid()

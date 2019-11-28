@@ -23,7 +23,7 @@ public class TrailerMissilesScenery : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             if (destroyList != null)
             {
@@ -33,7 +33,7 @@ public class TrailerMissilesScenery : MonoBehaviour
             LaunchMissile(0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.X))
         {
             if (destroyList != null)
             {
@@ -43,7 +43,7 @@ public class TrailerMissilesScenery : MonoBehaviour
             LaunchMissile(1);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.C))
         {
             if (destroyList != null)
             {
@@ -55,7 +55,7 @@ public class TrailerMissilesScenery : MonoBehaviour
 
         ///
 
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             if (tileFilled == null) tileFilled = Instantiate(targetTile, new Vector3(0f, -15.87f, 0f), Quaternion.identity);
 

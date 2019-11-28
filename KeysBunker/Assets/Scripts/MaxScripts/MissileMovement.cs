@@ -15,7 +15,7 @@ public class MissileMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.LeftShift))
         {
@@ -26,7 +26,7 @@ public class MissileMovement : MonoBehaviour
         transform.Rotate(Vector3.forward * -steer * (Input.GetAxis("Horizontal")));
 
         
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             DestroyRespawn();
         }

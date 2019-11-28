@@ -763,8 +763,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65e5358eda4a894ab3a7b939f0e1cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steer: 1
-  thrust: 5
+  steer: 2
+  thrust: 10
   particles: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
     type: 3}
 --- !u!50 &2016721307
