@@ -712,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 8255719816419717927, guid: d308713c32451254085925853f7e3be7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8255719816419717927, guid: d308713c32451254085925853f7e3be7,
         type: 3}
@@ -744,7 +744,7 @@ GameObject:
   - component: {fileID: 2016721307}
   - component: {fileID: 2016721310}
   - component: {fileID: 2016721306}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CounterMeasure
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ Transform:
   m_Children:
   - {fileID: 509216564}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!60 &2016721310
 PolygonCollider2D:

@@ -1,20 +1,43 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CounterMissileSpawner : MonoBehaviour
 {
     public GameObject counterMissilePrefab;
-    // Start is called before the first frame update
+
+    public int baseHealth;
+    private int health;
+
     void Start()
     {
-        
+        health = baseHealth;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (CustomGridGenerator.fireMissile)
-        { GameObject counterMissile = Instantiate(counterMissilePrefab, transform.position, Quaternion.identity); CustomGridGenerator.fireMissile = false; }
+        {
+            GameObject counterMissile = Instantiate(counterMissilePrefab, transform.position, Quaternion.identity); CustomGridGenerator.fireMissile = false;
+        }
+
+        if (health <= 0)
+        {
+            string currentScene = SceneManager.GetActiveScene().name;
+            SceneManager.LoadScene(currentScene);
+        }
+    }
+
+    void Hit()
+    {
+        health--;
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Hit();
+        Debug.Log("hit !" + health);
+        Debug.Log(col.transform.gameObject);
     }
 }

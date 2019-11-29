@@ -72,6 +72,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: trajectoire missile 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7920120225355558653, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225355558653, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.07
+      objectReference: {fileID: 0}
     - target: {fileID: 7920120224909152635, guid: 7c86be7216b1d454080927039d844c94,
         type: 3}
       propertyPath: m_Name
@@ -83,5 +93,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 7e9b1b9eeca8c604d9df13c59c7c9254,
         type: 3}
+    - target: {fileID: 7920120224909152632, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: movingSpeed
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c86be7216b1d454080927039d844c94, type: 3}
