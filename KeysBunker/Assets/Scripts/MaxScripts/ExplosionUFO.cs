@@ -7,10 +7,13 @@ public class ExplosionUFO : MonoBehaviour
     SpriteRenderer mat;
     public bool IsExploding = false;
 
+    [HideInInspector] public bool hasHit = false;
+
     private void Start()
     {
         mat = GetComponent<SpriteRenderer>();
     }
+
     private void Update()
     {
         if (IsExploding)
