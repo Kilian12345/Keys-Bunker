@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &6054982482365342818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7920120225694981264, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_Name
+      value: Chemin all missiles 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225694981265, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120224346902027, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_Name
+      value: trajectoire missile 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225355558653, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -21.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120225355558653, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 27.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120224909152635, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_Name
+      value: Path Missile 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7920120224346902024, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7e9b1b9eeca8c604d9df13c59c7c9254,
+        type: 3}
+    - target: {fileID: 7920120224909152632, guid: 7c86be7216b1d454080927039d844c94,
+        type: 3}
+      propertyPath: movingSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c86be7216b1d454080927039d844c94, type: 3}

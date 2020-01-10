@@ -9,7 +9,10 @@ public class CustomGridGenerator : MonoBehaviour
     public int columnLength, rowLength;
     public float x_Space, y_Space;
     public GameObject prefab;
-    public GameObject prefab2;
+    public GameObject targetSight;
+    public GameObject targetTile;
+    private GameObject currentTargetTile;
+    GameObject yeet;
     [SerializeField] List<GameObject> TileList = new List<GameObject>();
     public int listPosition = 0;
     [ShowInInspector] public Vector3 targetTilePosition;
@@ -18,16 +21,34 @@ public class CustomGridGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        x_Start = (int)transform.position.x;
+        y_Start = (int)transform.position.y;
         GenerateGrid();
+        yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
     void Update()
     {
         //CheckInputs();
-        MoveOnGrid();
+        //MoveOnGrid();
 
-        if (Input.GetKeyDown(KeyCode.Space)) TargetTilePosition();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (currentTargetTile == null) TargetTilePosition();
+
+            else Destroy(currentTargetTile);
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            foreach (GameObject item in TileList)
+            {
+                Destroy(item);
+            };
+            TileList.Clear();
+            GenerateGrid();
+        }
     }
 
     void CheckInputs()
@@ -162,21 +183,60 @@ public class CustomGridGenerator : MonoBehaviour
                 if (item.name == "E4")
                 { targetTilePosition = item.transform.position; fireMissile = true; }
     }
-    
+
     void MoveOnGrid()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) listPosition -= columnLength;
-        if (Input.GetKeyDown(KeyCode.D)) listPosition += columnLength;
-        if (Input.GetKeyDown(KeyCode.Z)) listPosition -= 1;
-        if (Input.GetKeyDown(KeyCode.S)) listPosition +=1;
+        Destroy(yeet);
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            if (listPosition == 0) listPosition = 20;
+            else if (listPosition == 1) listPosition = 21;
+            else if (listPosition == 2) listPosition = 22;
+            else if (listPosition == 3) listPosition = 23;
+            else if (listPosition == 4) listPosition = 24;
+            else listPosition -= columnLength;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            if(listPosition == 20) listPosition = 0;
+            else if(listPosition == 21) listPosition = 1;
+            else if(listPosition == 22) listPosition = 2;
+            else if (listPosition == 23) listPosition = 3;
+            else if(listPosition == 24) listPosition = 4;
+            else listPosition += columnLength;
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (listPosition == 0) listPosition = 4;
+            else if (listPosition == 5) listPosition = 9;
+            else if (listPosition == 10) listPosition = 14;
+            else if (listPosition == 15) listPosition = 19;
+            else if (listPosition == 20) listPosition = 24;
+            else listPosition -= 1;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            if (listPosition == 4) listPosition = 0;
+            else if (listPosition == 9) listPosition = 5;
+            else if (listPosition == 14) listPosition = 10;
+            else if (listPosition == 19) listPosition = 15;
+            else if (listPosition == 24) listPosition = 20;
+            else listPosition += 1;
+        }
 
         if (listPosition > TileList.Count) listPosition = 0;
-        if (listPosition < 0) listPosition = TileList.Count-1;
+        if (listPosition < 0) listPosition = TileList.Count - 1;
+        yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     void TargetTilePosition()
     {
-        Instantiate(prefab2, TileList[listPosition].transform.position, Quaternion.identity);
+        currentTargetTile = Instantiate(targetTile, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     void GenerateGrid()
