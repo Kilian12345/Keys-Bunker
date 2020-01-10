@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8481162541166466067}
   - component: {fileID: 8481162541166466066}
   - component: {fileID: 3621549364034084446}
+  - component: {fileID: 4545262859151343982}
   m_Layer: 0
   m_Name: "Barres de Vis\xE9e"
   m_TagString: Untagged
@@ -94,3 +95,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
+--- !u!81 &4545262859151343982
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481162541166466077}
+  m_Enabled: 1
