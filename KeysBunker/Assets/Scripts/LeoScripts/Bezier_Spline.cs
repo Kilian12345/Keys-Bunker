@@ -14,16 +14,27 @@ public class Bezier_Spline : MonoBehaviour
     [SerializeField] float width = 0.2f;
     [SerializeField] int numberOfPoints = 20;
     LineRenderer lineRenderer;
-    [SerializeField] GameObject controlPoint;
-    [SerializeField] GameObject missilePrefab;
+
+    [SerializeField] int pathComplexityMin;
+    [SerializeField] int pathComplexityMax;
+
+    [SerializeField] GameObject controlPointAnchor;
+    [SerializeField] GameObject controlPointVisual;
+    [SerializeField] GameObject playerBase;
+    [SerializeField] GameObject ufoPrefab;
     [SerializeField] Vector3[] splinePositions;
-    [SerializeField] List<GameObject> controlPoints = new List<GameObject>();
+
+    [SerializeField] List<GameObject> controlPointsList = new List<GameObject>();
     [ShowInInspector] Queue<GameObject> nodeQueue = new Queue<GameObject>();
-    GameObject CommanderScreen;
-    [SerializeField] RectTransform screenSize;
+    
+    float minimumNodeAmount;
 
     void Awake()
     {
+
+        controlPointsList.Clear();
+        nodeQueue.Clear();
+
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.useWorldSpace = true;
         lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
@@ -31,40 +42,86 @@ public class Bezier_Spline : MonoBehaviour
         splinePositions = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(splinePositions);
 
-        //CommanderScreen = GameObject.FindGameObjectWithTag("Respawn");
-
-        missilePrefab = Instantiate(missilePrefab, new Vector2(UnityEngine.Random.Range(-Camera.main.pixelWidth, Camera.main.pixelWidth), 
-                                                               UnityEngine.Random.Range(-Camera.main.pixelHeight, Camera.main.pixelHeight)), Quaternion.identity);
-
-        for (int i = 0; i < lineRenderer.positionCount; i++)
-        {
-            GameObject node = Instantiate(controlPoint, lineRenderer.GetPosition(i), Quaternion.identity);
-            nodeQueue.Enqueue(node);
-            node.transform.parent = gameObject.transform;
-        }
-
-        missilePrefab.gameObject.SendMessage("ReceiveNodeQueue", nodeQueue);
+        MissileSpawn();
+        SpawnNodes();
+        GenerateSpline();
+        GeneratePathQueue();
+        minimumNodeAmount = nodeQueue.Count - (nodeQueue.Count-2);
     }
-
 
     void Update()
     {
         GenerateSpline();
-
         CheckMissileStatus();
     }
 
-    private void CheckMissileStatus()
+    private void MissileSpawn()
     {
-        if(missilePrefab == null)
+        ufoPrefab = Instantiate(ufoPrefab, new Vector2(UnityEngine.Random.Range(-Camera.main.pixelWidth, Camera.main.pixelWidth),
+                                                               UnityEngine.Random.Range(-Camera.main.pixelHeight, Camera.main.pixelHeight)), Quaternion.identity);
+
+        Vector2 determinator = new Vector2(UnityEngine.Random.Range(0, 1), UnityEngine.Random.Range(0, 1));
+
+        if (determinator == new Vector2(0, 0))
         {
-            Destroy(gameObject);
+
         }
+        else if (determinator == new Vector2(0, 1))
+        {
+
+        }
+
+        else if (determinator == new Vector2(1, 0))
+        {
+
+        }
+        else if (determinator == new Vector2(1, 1))
+        {
+
+        }
+    }
+
+    private void SpawnNodes()
+    {
+        //set start controlPoint values
+        GameObject startPoint = Instantiate(controlPointAnchor, gameObject.transform);
+        startPoint.name = "Start_ControlPoint";
+        startPoint.transform.position = new Vector2(-32, -22);
+
+        controlPointsList.Add(startPoint);
+        controlPointsList.Add(startPoint);
+
+        for (int i = 0; i < UnityEngine.Random.Range(pathComplexityMin, pathComplexityMax); i++)
+        {
+            GameObject pathPoint = Instantiate(controlPointAnchor, gameObject.transform);
+            pathPoint.name = "Path_ControlPoint";
+            controlPointsList.Add(pathPoint);
+            controlPointAnchor.transform.position = new Vector2(UnityEngine.Random.Range(-32, 32), UnityEngine.Random.Range(-22, 22));
+        }
+
+        //set end controlPoint values
+        GameObject endPoint = Instantiate(controlPointAnchor, gameObject.transform);
+        endPoint.name = "End_ControlPoint";
+        endPoint.transform.position = playerBase.transform.position;
+        controlPointsList.Add(endPoint);
+        controlPointsList.Add(endPoint);
+    }
+
+    private void GeneratePathQueue()
+    {
+        for (int i = 0; i < lineRenderer.positionCount; i++)
+        {
+            GameObject node = Instantiate(controlPointVisual, lineRenderer.GetPosition(i), Quaternion.identity);
+            nodeQueue.Enqueue(node);
+            node.transform.parent = gameObject.transform;
+        }
+
+        ufoPrefab.gameObject.SendMessage("ReceiveNodeQueue", nodeQueue);
     }
 
     void GenerateSpline()
     {
-        if (null == lineRenderer || controlPoints == null || controlPoints.Count < 3)
+        if (null == lineRenderer || controlPointsList == null || controlPointsList.Count < 3)
         {
             return; // not enough points specified
         }
@@ -78,29 +135,29 @@ public class Bezier_Spline : MonoBehaviour
         {
             numberOfPoints = 2;
         }
-        lineRenderer.positionCount = numberOfPoints * (controlPoints.Count - 2);
+        lineRenderer.positionCount = numberOfPoints * (controlPointsList.Count - 2);
 
         Vector3 p0, p1, p2;
-        for (int j = 0; j < controlPoints.Count - 2; j++)
+        for (int j = 0; j < controlPointsList.Count - 2; j++)
         {
             // check control points
-            if (controlPoints[j] == null || controlPoints[j + 1] == null
-            || controlPoints[j + 2] == null)
+            if (controlPointsList[j] == null || controlPointsList[j + 1] == null
+            || controlPointsList[j + 2] == null)
             {
                 return;
             }
             // determine control points of segment
-            p0 = 0.5f * (controlPoints[j].transform.position
-            + controlPoints[j + 1].transform.position);
-            p1 = controlPoints[j + 1].transform.position;
-            p2 = 0.5f * (controlPoints[j + 1].transform.position
-            + controlPoints[j + 2].transform.position);
+            p0 = 0.5f * (controlPointsList[j].transform.position
+            + controlPointsList[j + 1].transform.position);
+            p1 = controlPointsList[j + 1].transform.position;
+            p2 = 0.5f * (controlPointsList[j + 1].transform.position
+            + controlPointsList[j + 2].transform.position);
 
             // set points of quadratic Bezier curve
             Vector3 position;
             float t;
             float pointStep = 1.0f / numberOfPoints;
-            if (j == controlPoints.Count - 3)
+            if (j == controlPointsList.Count - 3)
             {
                 pointStep = 1.0f / (numberOfPoints - 1.0f);
                 // last point of last segment should reach p2
@@ -112,6 +169,20 @@ public class Bezier_Spline : MonoBehaviour
                 + 2.0f * (1.0f - t) * t * p1 + t * t * p2;
                 lineRenderer.SetPosition(i + j * numberOfPoints, position);
             }
+        }
+    }
+
+    private void CheckMissileStatus()
+    {
+        if (ufoPrefab == null)
+        {
+            Destroy(gameObject);
+        }
+
+        if (nodeQueue.Count < minimumNodeAmount)
+        {
+            Debug.Log("Sent Message");
+            ufoPrefab.gameObject.SendMessage("Integrity");
         }
     }
 }

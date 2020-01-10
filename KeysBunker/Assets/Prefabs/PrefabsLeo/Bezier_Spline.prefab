@@ -366,9 +366,15 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   width: 0.2
   numberOfPoints: 20
-  controlPoint: {fileID: 2503325133067717029, guid: 9603a9de61b64ec4d89d6497d68fe1c8,
+  pathComplexityMin: 3
+  pathComplexityMax: 8
+  controlPointAnchor: {fileID: 2503325133067717029, guid: 9603a9de61b64ec4d89d6497d68fe1c8,
     type: 3}
-  missilePrefab: {fileID: 7693356866319370804, guid: c797353f2f0f417409e50e662c85f910,
+  controlPointVisual: {fileID: 2503325133067717029, guid: 21057366f55260b43bcda1d1fb88f5c0,
+    type: 3}
+  playerBase: {fileID: 8255719816419717928, guid: d308713c32451254085925853f7e3be7,
+    type: 3}
+  ufoPrefab: {fileID: 7693356866319370804, guid: c797353f2f0f417409e50e662c85f910,
     type: 3}
   splinePositions:
   - {x: 31.5, y: -22.4, z: 0}
@@ -491,17 +497,7 @@ MonoBehaviour:
   - {x: -0.13656512, y: -0.23711914, z: 0}
   - {x: -0.10914127, y: -0.20927978, z: 0}
   - {x: -0.1, y: -0.2, z: 0}
-  controlPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 1429637238769190023}
-  - {fileID: 1429637238769190023}
-  screenSize: {fileID: 7636666593513430330, guid: 39c838e9a8cbad34bb9df234af597e37,
-    type: 3}
+  controlPointsList: []
 --- !u!1 &4497811977621181453
 GameObject:
   m_ObjectHideFlags: 0

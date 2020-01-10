@@ -29,36 +29,11 @@ public class SplineMissile : MonoBehaviour
 
     Vector2 nextMaxInterval = new Vector2(1.75f, .5f);
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
-
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Vector2 RandomSelectedCoords = new Vector2(UnityEngine.Random.Range(UnityEngine.Random.Range(prevMaxInterval.x, nextMaxInterval.x), 
-                                                                            UnityEngine.Random.Range(prevMaxInterval.y, nextMaxInterval.y)), 
-                                                    UnityEngine.Random.Range(UnityEngine.Random.Range(prevMinInterval.x, nextMinInterval.x), 
-                                                                             UnityEngine.Random.Range(prevMinInterval.y, nextMinInterval.y)));
 
-        Debug.Log(RandomSelectedCoords);
-        
-        Vector2 determinator = new Vector2(UnityEngine.Random.Range(0, 1), UnityEngine.Random.Range(0, 1));
-
-        if(determinator == new Vector2 (0, 0))
-        {
-
-        }
-        else if(determinator == new Vector2(0, 1))
-        {
-
-        }
-
-        else if(determinator == new Vector2(1, 0))
-        {
-
-        }
-        else if (determinator == new Vector2(1, 1))
-        {
-
-        }
     }
 
     void Update()
@@ -92,8 +67,7 @@ public class SplineMissile : MonoBehaviour
     void ReceiveNodeQueue(Queue<GameObject> queue)
     {
         receivedNodeQueue = queue;
-        Debug.Log("Message Received");
-        startPosition = transform.position;
+        startPosition = receivedNodeQueue.Peek().transform.position;
         targetPosition = receivedNodeQueue.Peek().transform.position;
     }
 }
