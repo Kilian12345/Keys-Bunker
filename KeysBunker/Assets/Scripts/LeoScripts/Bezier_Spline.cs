@@ -6,15 +6,21 @@ using System;
 //[ExecuteInEditMode, RequireComponent(typeof(LineRenderer))]
 public class Bezier_Spline : MonoBehaviour
 {
+    /* THIS CLASS GENERATES A PROCEDURAL BEZIER SPLINE, SPAWNS A NEW MISSILE AT
+     * A BASE POSITION AND SENDS IT A QUEUE OF WAYPOINTS TO MOVE TOWARDS
+     */
+
     [SerializeField] Color color = Color.white;
     [SerializeField] float width = 0.2f;
     [SerializeField] int numberOfPoints = 20;
     LineRenderer lineRenderer;
     [SerializeField] GameObject controlPoint;
-    [SerializeField] GameObject missile;
+    [SerializeField] GameObject missilePrefab;
     [SerializeField] Vector3[] splinePositions;
     [SerializeField] List<GameObject> controlPoints = new List<GameObject>();
     [ShowInInspector] Queue<GameObject> nodeQueue = new Queue<GameObject>();
+    GameObject CommanderScreen;
+    [SerializeField] RectTransform screenSize;
 
     void Awake()
     {
@@ -25,6 +31,11 @@ public class Bezier_Spline : MonoBehaviour
         splinePositions = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(splinePositions);
 
+        //CommanderScreen = GameObject.FindGameObjectWithTag("Respawn");
+
+        missilePrefab = Instantiate(missilePrefab, new Vector2(UnityEngine.Random.Range(-Camera.main.pixelWidth, Camera.main.pixelWidth), 
+                                                               UnityEngine.Random.Range(-Camera.main.pixelHeight, Camera.main.pixelHeight)), Quaternion.identity);
+
         for (int i = 0; i < lineRenderer.positionCount; i++)
         {
             GameObject node = Instantiate(controlPoint, lineRenderer.GetPosition(i), Quaternion.identity);
@@ -32,7 +43,7 @@ public class Bezier_Spline : MonoBehaviour
             node.transform.parent = gameObject.transform;
         }
 
-        missile.gameObject.SendMessage("ReceiveNodeQueue", nodeQueue);
+        missilePrefab.gameObject.SendMessage("ReceiveNodeQueue", nodeQueue);
     }
 
 
@@ -45,7 +56,7 @@ public class Bezier_Spline : MonoBehaviour
 
     private void CheckMissileStatus()
     {
-        if(missile == null)
+        if(missilePrefab == null)
         {
             Destroy(gameObject);
         }

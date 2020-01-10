@@ -6,6 +6,10 @@ using System;
 
 public class SplineMissile : MonoBehaviour
 {
+    /* THIS CLASS IS INSTANTIATED BY THE BEZIER SPLINE CLASS. IT FOLLOWS
+     * A SET OF WAYPOINTS AND IS DESTROYED ON COLLISION? ALONG WITH THE SPLINE
+     */
+
     //TWEEN VALUES
     [SerializeField] float time;
     [SerializeField] Vector3 change;
