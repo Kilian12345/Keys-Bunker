@@ -29,20 +29,18 @@ public class SplineMissile : MonoBehaviour
 
     Vector2 nextMaxInterval = new Vector2(1.75f, .5f);
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
-    
+
+    TrailRenderer trailRenderer;
+
     // Start is called before the first frame update
     void Awake()
     {
-
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     void Update()
     {
         MissileMovement();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(Mathf.PerlinNoise(xCoord * xFrequency * Time.time, yCoord * yFrequency * Time.deltaTime));
-        }
     }
 
     private void MissileMovement()
@@ -69,5 +67,6 @@ public class SplineMissile : MonoBehaviour
         receivedNodeQueue = queue;
         startPosition = receivedNodeQueue.Peek().transform.position;
         targetPosition = receivedNodeQueue.Peek().transform.position;
+        trailRenderer.enabled = true;
     }
 }

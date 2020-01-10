@@ -366,8 +366,8 @@ MonoBehaviour:
   color: {r: 1, g: 1, b: 1, a: 1}
   width: 0.2
   numberOfPoints: 20
-  pathComplexityMin: 3
-  pathComplexityMax: 8
+  pathComplexityMin: 1
+  pathComplexityMax: 4
   controlPointAnchor: {fileID: 2503325133067717029, guid: 9603a9de61b64ec4d89d6497d68fe1c8,
     type: 3}
   controlPointVisual: {fileID: 2503325133067717029, guid: 21057366f55260b43bcda1d1fb88f5c0,
