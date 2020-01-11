@@ -5,7 +5,7 @@ using System.IO.Ports;
 
 public class TestArduino : MonoBehaviour
 {
-    public float speed;
+    /*public float speed;
     private float movingSpeed;
 
     SerialPort sp = new SerialPort("COM3", 9600); // put the correct Port name (indicated at bottom right of the arduino editor window)
@@ -74,6 +74,6 @@ public class TestArduino : MonoBehaviour
 
         if (dir == 4) transform.Translate(Vector2.down * movingSpeed, Space.World);
     }
-
+    */
     //{ Vector2 currentPos = transform.position; transform.position = Vector2.Lerp(currentPos, currentPos + new Vector2(amountToMove, 0), Time.deltaTime); }
 }
