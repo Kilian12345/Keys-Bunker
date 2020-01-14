@@ -806,6 +806,7 @@ GameObject:
   - component: {fileID: 2016721307}
   - component: {fileID: 2016721310}
   - component: {fileID: 2016721306}
+  - component: {fileID: 2016721311}
   m_Layer: 8
   m_Name: CounterMeasure
   m_TagString: Untagged
@@ -957,3 +958,17 @@ PolygonCollider2D:
       - {x: 0.5056051, y: -1.8292783}
       - {x: 0.32540333, y: -1.5801029}
       - {x: 0.33540335, y: -0.5407217}
+--- !u!114 &2016721311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016721305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0076357175ca34646b6e8d08a517b73c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ratio: 10
+  steer: 0.02

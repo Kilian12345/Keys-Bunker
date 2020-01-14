@@ -43,7 +43,11 @@ void loop()
   } 
   else
   {
+    Serial.write(0);
+    Serial.flush();
+    
     xAxisCheck = true;
+    delay(20);
   }
 
   if (buttonState2 == HIGH && xAxisCheck == true)
@@ -56,7 +60,11 @@ void loop()
   } 
   else
   {
+    Serial.write(0);
+    Serial.flush();
+    
     xAxisCheck = true;
+    delay(20);
   }
 
   if (buttonState3  == HIGH && yAxisCheck == true)
@@ -69,7 +77,11 @@ void loop()
   } 
   else
   {
+    Serial.write(0);
+    Serial.flush();
+    
     yAxisCheck = true;
+    delay(20);
   }
 
   if (buttonState4  == HIGH && yAxisCheck == true)
@@ -82,6 +94,10 @@ void loop()
   } 
   else
   {
+    Serial.write(0);
+    Serial.flush();
+    
     yAxisCheck = true;
+    delay(20);
   }
 }

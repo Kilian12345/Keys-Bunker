@@ -25,7 +25,6 @@ public class MissileMovement : MonoBehaviour
 
         transform.Rotate(Vector3.forward * -steer * (Input.GetAxis("Horizontal")));
 
-        
         if (Input.GetKeyDown(KeyCode.T))
         {
             DestroyRespawn();
