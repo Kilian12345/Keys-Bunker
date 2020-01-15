@@ -45,6 +45,9 @@ int potentiometerValueV2 = 0;
 
 
 void setup() {
+
+  Serial.begin(9600);
+  
   // initialize the LED pin as an output:
   pinMode(ledPin, OUTPUT);
   pinMode(ledPinDos, OUTPUT);
@@ -57,7 +60,7 @@ void setup() {
   // MAGNET ----------------
   pinMode(hallSensorPin, INPUT);  
 
-  Serial.begin(9600);
+  
   // MAGNET ----------------
 }
 
@@ -68,18 +71,18 @@ void loop() {
   
   potValue = analogRead(potentiometer);
   potentiometerValue = map(potValue, 0, 1023, 0, 255);
-  //potentiometerValueV2 = map(potentiometerValue, 0, 1023, 2, 21);
+   // potentiometerValueV2 = map(potentiometerValue, 0, 1023, 2, 21);
 
   //potentiometerValueV2 = potValue;
   
-  //--//potentiometerValueV2 = int(potValue*20/1024)+2; //produit en croix
-  potentiometerValueV2 = 1;
+    potentiometerValueV2 = int(potValue*20/1024)+2; //produit en croix
+  //potentiometerValueV2 = 1;
   
   
-  Serial.println(potentiometerValueV2);
+  //Serial.println(potentiometerValueV2);
 
   analogWrite(ledPinTres, potentiometerValue);
-  Serial.write(potValue);
+  Serial.write(potentiometerValueV2);
   Serial.flush();
 
   delay(10);
