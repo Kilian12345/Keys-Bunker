@@ -9,6 +9,8 @@ public class TestPotentiometerArduino : MonoBehaviour
 
     public float ratio;
 
+    private byte[] apple =new byte[32];
+
     private bool started;
 
     private float timer;
@@ -33,12 +35,12 @@ public class TestPotentiometerArduino : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if (sp.IsOpen)
         {
             try
-            { 
+            {
                 int value = sp.ReadByte();
 
                 print(value);
@@ -55,6 +57,11 @@ public class TestPotentiometerArduino : MonoBehaviour
             }
         }
     }
+
+    /*void Update()
+    {
+
+    }*/
 
     void Thrust(int val)
     {
@@ -79,6 +86,8 @@ public class TestPotentiometerArduino : MonoBehaviour
 
     void Steer(int val)
     {
+        if (val >= 22) val = 11;
+
         if (val <= 11)
         {
             //positif droite

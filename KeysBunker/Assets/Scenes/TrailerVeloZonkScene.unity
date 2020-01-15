@@ -965,10 +965,10 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2016721305}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0076357175ca34646b6e8d08a517b73c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ratio: 10
-  steer: 0.02
+  steer: 0.5

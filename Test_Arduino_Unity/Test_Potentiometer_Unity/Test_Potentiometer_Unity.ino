@@ -38,7 +38,8 @@ const int potentiometer = A0;  // GUIDON
 int buttonState = 0;         // variable for reading the pushbutton status
 int buttonStateDOS = 0;         // variable for reading the pushbutton status   
 int magnetState = 0; 
-int potValue = 0; 
+int potValue = 0;
+int potentiometerValue = 0;
 int potentiometerValueV2 = 0;
 
 
@@ -66,19 +67,22 @@ void loop() {
   // GUIDON ----------------
   
   potValue = analogRead(potentiometer);
-  //potentiometerValue = map(potentiometerValue, 0, 1023, 0, 255);
+  potentiometerValue = map(potValue, 0, 1023, 0, 255);
   //potentiometerValueV2 = map(potentiometerValue, 0, 1023, 2, 21);
 
-    potentiometerValueV2 = int(potValue*20/1024)+2; //produit en croix
+  //potentiometerValueV2 = potValue;
+  
+  //--//potentiometerValueV2 = int(potValue*20/1024)+2; //produit en croix
+  potentiometerValueV2 = 1;
   
   
   Serial.println(potentiometerValueV2);
 
-  analogWrite(ledPinTres, potentiometerValueV2);
-  Serial.write(potentiometerValueV2);
+  analogWrite(ledPinTres, potentiometerValue);
+  Serial.write(potValue);
   Serial.flush();
 
-  delay(100);
+  delay(10);
   
   // GUIDON ----------------
 
