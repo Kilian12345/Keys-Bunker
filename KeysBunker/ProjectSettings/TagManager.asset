@@ -4,6 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - Plane
+  - Birbs
+  - Missile
+  - TARGETED
+  - Tile
+  tags:
   - Counter Measure
   layers:
   - Default
