@@ -16,6 +16,7 @@ public class SplineMissile : MonoBehaviour
     [SerializeField] Vector3 startPosition;
     [SerializeField] Vector3 targetPosition;
     [SerializeField] float duration;
+
     [SerializeField] Sprite targetedObject;
     [ShowInInspector] Queue<GameObject> receivedNodeQueue;
     AudioSource audioSource;
@@ -126,5 +127,11 @@ public class SplineMissile : MonoBehaviour
         {
             audioSource.Stop();
         }
+    }
+
+    void OnDestroy()
+    {
+        if (gameObject.transform.parent.tag == "Missile") MissileManager.currentMissiles--;
+        MissileManager.currentUFOS--;
     }
 }

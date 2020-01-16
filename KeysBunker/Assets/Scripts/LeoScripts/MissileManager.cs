@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 public class MissileManager : MonoBehaviour
 {
@@ -10,25 +11,28 @@ public class MissileManager : MonoBehaviour
 
     [SerializeField] GameObject bezierCurve;
 
+    //UFO Variables
+    [SerializeField] float maxUFOS;
+    [ShowInInspector] public static float currentUFOS;
+    [Range(0, 100)] [SerializeField] float proportionOfUFOS;
+
     //Missile Variables
-    [SerializeField] int maxNumberOfUFOS;
-    [SerializeField] int currTotalUFOS;
-    [SerializeField] int numberOfMissiles;
-    [SerializeField] int numberOfOthers;
-    [SerializeField][Range(0, 100)] float baseProportionOfMissiles;
-    [SerializeField][Range(0, 100)] float baseProportionOfOthers;
+    [SerializeField] float maxMissiles;
+    [ShowInInspector] public static float currentMissiles;
+    [Range (0, 100)][SerializeField] float proportionOfMissiles;
+    [SerializeField] float missileSpawnChance;
 
     [SerializeField] List<string> ufoType = new List<string>();
     
     //Spawn Variables
     [SerializeField] float timeToSpawn;
     [SerializeField] float timePassed;
+    [SerializeField] public float yeet;
 
     // Start is called before the first frame update
     void Awake()
     {
         ufoType.Add("Plane");
-        ufoType.Add("Birbs");
         ufoType.Add("Missile");
         SpawnMissile();
         SpawnMissile();
@@ -38,33 +42,51 @@ public class MissileManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     //   GameObject primitive = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Capsule), Vector3.zero, Quaternion.identity);
-        //MissileSpawnUpdate();
+        MissileSpawnCheck();
 
         if(Input.GetKeyDown(KeyCode.A)) SpawnMissile();
-
     }
 
-    private void MissileSpawnUpdate()
+    void MissileSpawnCheck()
     {
-        numberOfOthers = currTotalUFOS - numberOfMissiles;
-        baseProportionOfMissiles = numberOfMissiles / currTotalUFOS * 100;
-        baseProportionOfOthers = numberOfOthers / currTotalUFOS * 100;
-        timePassed += Time.deltaTime;
+        yeet = Mathf.Abs(maxUFOS - currentMissiles);
+        proportionOfMissiles = currentMissiles / yeet * 100;
+        proportionOfUFOS = currentUFOS / maxUFOS * 100;
+
+        missileSpawnChance = 100 - proportionOfMissiles;
 
         if (timePassed >= timeToSpawn)
         {
-            timePassed = 0f;
             SpawnMissile();
         }
+        else if(currentUFOS < maxUFOS) timePassed += Time.deltaTime;
     }
 
     void SpawnMissile()
-    {
-        GameObject bezier = Instantiate(bezierCurve);
-        int whichTag = UnityEngine.Random.Range(0, 3);
-        bezier.gameObject.tag = "Missile"; //ufoType[whichTag];
-        bezier.gameObject.name = "MISSILE PATH";  //ufoType[whichTag] + " path";
-        bezier.SetActive(true);
+    {               
+        int randomPick = UnityEngine.Random.Range(0, 100);
+
+        if(currentUFOS < maxUFOS)
+        {
+            if (randomPick <= missileSpawnChance && currentMissiles < maxMissiles)
+            {
+                timePassed = 0f;
+                GameObject bezier = Instantiate(bezierCurve);
+                bezier.SetActive(true);
+                bezier.gameObject.tag = "Missile";
+                bezier.gameObject.name = "Missile Path";
+                currentMissiles++;
+            }
+
+            else
+            {
+                timePassed = 0f;
+                GameObject bezier = Instantiate(bezierCurve);
+                bezier.SetActive(true);
+                bezier.gameObject.tag = "Plane";
+                bezier.gameObject.name = "Plane Path";
+            }
+            currentUFOS++;
+        }
     }
 }

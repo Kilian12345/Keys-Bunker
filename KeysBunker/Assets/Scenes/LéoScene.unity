@@ -1382,11 +1382,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8230299702891516059, guid: d308713c32451254085925853f7e3be7,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308713c32451254085925853f7e3be7, type: 3}
 --- !u!1 &2016721305
@@ -1619,6 +1614,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: currTotalUFOS
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: numberOfMissiles
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: maxNumberOfUFOS
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: maxUFOS
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: maxMissiles
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: timeToSpawn
+      value: 999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43c573910d9fcf438159fda6d99972f, type: 3}
