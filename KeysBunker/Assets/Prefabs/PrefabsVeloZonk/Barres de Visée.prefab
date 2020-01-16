@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8481162541166466066}
   - component: {fileID: 3621549364034084446}
   - component: {fileID: 1004175993740833434}
+  - component: {fileID: 5309694584830605660}
   m_Layer: 0
   m_Name: "Barres de Vis\xE9e"
   m_TagString: Untagged
@@ -122,3 +123,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!81 &5309694584830605660
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481162541166466077}
+  m_Enabled: 1

@@ -6,7 +6,6 @@ public class GridMovement : MonoBehaviour
 {
     public float speed;
     public Sprite targetTileSprite;
-    AudioSource[] activeAudioSources;
 
     // Update is called once per frame
     void Update()
@@ -21,12 +20,6 @@ public class GridMovement : MonoBehaviour
             GameObject tile = collision.gameObject;
 
             if(collision.gameObject.tag != "TARGETED") tile.tag = "LISTENING";
-
-            activeAudioSources = collision.gameObject.GetComponents<AudioSource>();
-            foreach (AudioSource audio in activeAudioSources)
-            {
-                audio.Play();
-            }
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

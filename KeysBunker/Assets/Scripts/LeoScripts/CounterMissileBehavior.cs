@@ -13,7 +13,7 @@ public class CounterMissileBehavior : MonoBehaviour
     void Start()
     {
         gridScript = FindObjectOfType<CustomGridGenerator>();
-        target = gridScript.targetTilePosition;
+        //target = gridScript.targetTilePosition;
     }
 
     // Update is called once per frame

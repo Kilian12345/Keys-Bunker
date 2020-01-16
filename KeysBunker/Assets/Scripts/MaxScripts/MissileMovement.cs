@@ -30,7 +30,7 @@ public class MissileMovement : MonoBehaviour
         {
             DestroyRespawn();
         }
-        
+
         /*if (Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Rotate(Vector3.forward * steer);
@@ -38,6 +38,24 @@ public class MissileMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
         {
             transform.Rotate(-Vector3.forward * steer);
+
+
+
+
+        ArgumentNullException: Value cannot be null.
+        Parameter name: shader
+
+        UnityEngine.Material..ctor (UnityEngine.Shader shader) (at <52d7b92b1d0e4868ac4c518247d361f7>:0)
+        Bezier_Spline.Awake () (at <9021443dad274ef494ed4bf1e49341cd>:0)
+        UnityEngine.Object:Instantiate(GameObject)
+        MissileManager:SpawnMissile()
+        MissileManager:Awake()
+
+
+
+
+
+
         }*/
     }
 

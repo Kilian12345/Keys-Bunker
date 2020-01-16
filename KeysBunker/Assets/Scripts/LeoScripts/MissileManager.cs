@@ -8,7 +8,7 @@ public class MissileManager : MonoBehaviour
     /* THIS CLASS HANDLES THE INSTANTIATION OF BEZIER SPLINES
      */
 
-    [SerializeField] GameObject bezierGenerator;
+    [SerializeField] GameObject bezierCurve;
 
     //Missile Variables
     [SerializeField] int maxNumberOfUFOS;
@@ -61,7 +61,7 @@ public class MissileManager : MonoBehaviour
 
     void SpawnMissile()
     {
-        GameObject bezier = Instantiate(bezierGenerator, transform.position, Quaternion.identity);
+        GameObject bezier = Instantiate(bezierCurve);
         int whichTag = UnityEngine.Random.Range(0, 3);
         bezier.gameObject.tag = "Missile"; //ufoType[whichTag];
         bezier.gameObject.name = "MISSILE PATH";  //ufoType[whichTag] + " path";

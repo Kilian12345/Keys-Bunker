@@ -37,8 +37,6 @@ public class Bezier_Spline : MonoBehaviour
         nodeQueue.Clear();
 
         lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.useWorldSpace = true;
-        lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
         lineRenderer.positionCount = numberOfPoints;
 
         splinePositions = new Vector3[lineRenderer.positionCount];

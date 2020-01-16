@@ -34,6 +34,10 @@ public class SplineMissile : MonoBehaviour
     TrailRenderer trailRenderer;
 
     bool isDestroyable;
+    bool isPlaying;
+
+    float clipLength;
+    float cooldownPassed;
     
     // Start is called before the first frame update
     void Awake()
@@ -45,6 +49,13 @@ public class SplineMissile : MonoBehaviour
     void Update()
     {
         MissileMovement();
+        PlaySoundCooldown();
+    }
+
+    private void PlaySoundCooldown()
+    {
+        if (cooldownPassed >= clipLength + .5f) isPlaying = false;
+        else cooldownPassed += Time.deltaTime;
     }
 
     void IsDestroyable()
@@ -81,11 +92,19 @@ public class SplineMissile : MonoBehaviour
         trailRenderer.enabled = true;
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+    }
+
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "LISTENING")
+        if (other.gameObject.tag == "LISTENING" && !isPlaying)
         {
+            cooldownPassed = 0f;
+            isPlaying = true;
             audioSource.Play();
+            clipLength = audioSource.clip.length;
         }
 
         if (other.gameObject.tag == "Base" && isDestroyable)
@@ -98,14 +117,6 @@ public class SplineMissile : MonoBehaviour
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = targetedObject;
             print("FUCK! " + gameObject.name + " is being targeted");
-        }
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "LISTENING")
-        {
-            audioSource.Play();
         }
     }
 

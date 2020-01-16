@@ -43,5 +43,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55cc65b340fa64d4a93ac75bc4847777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bezierGenerator: {fileID: 4494709701688026612, guid: ec83dcfce0a3ac74c8ea96cba8482381,
+  bezierCurve: {fileID: 4494709701688026612, guid: ec83dcfce0a3ac74c8ea96cba8482381,
     type: 3}
+  maxNumberOfUFOS: 50
+  currTotalUFOS: 25
+  numberOfMissiles: 25
+  numberOfOthers: 0
+  baseProportionOfMissiles: 0
+  baseProportionOfOthers: 0
+  ufoType: []
+  timeToSpawn: 4
+  timePassed: 0
