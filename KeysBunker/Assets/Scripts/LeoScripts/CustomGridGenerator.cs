@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-[ExecuteInEditMode]
 public class CustomGridGenerator : MonoBehaviour
 {
     float x_Start, y_Start;
@@ -11,8 +10,7 @@ public class CustomGridGenerator : MonoBehaviour
     public float x_Space, y_Space;
     public GameObject prefab;
     public GameObject targetSight;
-    public GameObject targetTile;
-    private GameObject currentTargetTile;
+    [SerializeField] GameObject currentTargetTile;
     GameObject yeet;
     [SerializeField] List<GameObject> TileList = new List<GameObject>();
     public int listPosition = 0;
@@ -25,7 +23,7 @@ public class CustomGridGenerator : MonoBehaviour
         x_Start = transform.position.x;
         y_Start = transform.position.y;
         GenerateGrid();
-        yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
+        //yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     // Update is called once per frame
@@ -187,8 +185,6 @@ public class CustomGridGenerator : MonoBehaviour
 
     void MoveOnGrid()
     {
-        Destroy(yeet);
-
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if (listPosition == 0) listPosition = 20;
@@ -232,12 +228,11 @@ public class CustomGridGenerator : MonoBehaviour
 
         if (listPosition > TileList.Count) listPosition = 0;
         if (listPosition < 0) listPosition = TileList.Count - 1;
-        yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     void TargetTilePosition()
     {
-        currentTargetTile = Instantiate(targetTile, TileList[listPosition].transform.position, Quaternion.identity);
+        //currentTargetTile = Instantiate(targetTile, TileList[listPosition].transform.position, Quaternion.identity);
     }
 
     void GenerateGrid()
@@ -246,7 +241,7 @@ public class CustomGridGenerator : MonoBehaviour
         {
             for (int j = 0; j < rowLength; j++)
             {
-                GameObject grid_object = Instantiate(prefab);
+                GameObject grid_object = Instantiate(prefab, gameObject.transform);
                 grid_object.transform.position = new Vector2(x_Start + (x_Space * (i % columnLength)), y_Start - (y_Space * (j % rowLength)));
                 TileList.Add(grid_object);
                 switch (i)

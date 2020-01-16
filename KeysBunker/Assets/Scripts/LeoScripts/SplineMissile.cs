@@ -16,7 +16,7 @@ public class SplineMissile : MonoBehaviour
     [SerializeField] Vector3 startPosition;
     [SerializeField] Vector3 targetPosition;
     [SerializeField] float duration;
-
+    [SerializeField] Sprite targetedObject;
     [ShowInInspector] Queue<GameObject> receivedNodeQueue;
 
     public float xCoord;
@@ -31,7 +31,7 @@ public class SplineMissile : MonoBehaviour
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
 
     TrailRenderer trailRenderer;
-
+    
     // Start is called before the first frame update
     void Awake()
     {
@@ -68,5 +68,14 @@ public class SplineMissile : MonoBehaviour
         startPosition = receivedNodeQueue.Peek().transform.position;
         targetPosition = receivedNodeQueue.Peek().transform.position;
         trailRenderer.enabled = true;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "TARGETED")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = targetedObject;
+            print("FUCK! " + gameObject.name + " is being targeted");
+        }
     }
 }
