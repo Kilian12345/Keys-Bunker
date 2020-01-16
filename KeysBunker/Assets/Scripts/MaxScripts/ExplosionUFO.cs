@@ -6,6 +6,7 @@ public class ExplosionUFO : MonoBehaviour
 {
     SpriteRenderer mat;
     public bool IsExploding = false;
+    bool lowIntegrity;
 
     [HideInInspector] public bool hasHit = false;
 
@@ -30,8 +31,14 @@ public class ExplosionUFO : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D()
+    void Integrity()
     {
-        IsExploding = true;
+        Debug.Log("Message Received");
+        lowIntegrity = true;
+    }
+
+    void OnTriggerStay2D()
+    {
+        if(lowIntegrity) IsExploding = true;
     }
 }

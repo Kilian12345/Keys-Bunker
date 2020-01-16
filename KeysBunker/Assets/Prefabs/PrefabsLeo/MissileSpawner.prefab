@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8390066851093356346
+--- !u!1 &3719926443897003366
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8390066851093356341}
-  - component: {fileID: 8390066851093356340}
+  - component: {fileID: 3719926443897003367}
+  - component: {fileID: 3719926443897003360}
   m_Layer: 0
-  m_Name: Grid2
+  m_Name: MissileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8390066851093356341
+--- !u!4 &3719926443897003367
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8390066851093356346}
+  m_GameObject: {fileID: 3719926443897003366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -16.3, y: 15.6, z: 0}
+  m_LocalPosition: {x: -25.473375, y: -1.0293745, z: -16.390625}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8390066851093356340
+--- !u!114 &3719926443897003360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8390066851093356346}
+  m_GameObject: {fileID: 3719926443897003366}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b6af473bc059df439507236a5efa540, type: 3}
+  m_Script: {fileID: 11500000, guid: 55cc65b340fa64d4a93ac75bc4847777, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  columnLength: 5
-  rowLength: 5
-  x_Space: 12
-  y_Space: 7.5
-  prefab: {fileID: 8795455149576147668, guid: c490683bf9166a741abeaeace182b0d5, type: 3}
-  targetSight: {fileID: 8481162541166466077, guid: e0228a04bb86471479721bb0a20ced67,
+  bezierGenerator: {fileID: 4494709701688026612, guid: ec83dcfce0a3ac74c8ea96cba8482381,
     type: 3}
-  targetTile: {fileID: 8678693279802661574, guid: 376c6422effe2dc46bc7adacd8149a20,
-    type: 3}
-  TileList: []
-  listPosition: 0
-  targetTilePosition: {x: 0, y: 0, z: 0}

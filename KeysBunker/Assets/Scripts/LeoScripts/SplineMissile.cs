@@ -6,13 +6,17 @@ using System;
 
 public class SplineMissile : MonoBehaviour
 {
+    /* THIS CLASS IS INSTANTIATED BY THE BEZIER SPLINE CLASS. IT FOLLOWS
+     * A SET OF WAYPOINTS AND IS DESTROYED ON COLLISION? ALONG WITH THE SPLINE
+     */
+
     //TWEEN VALUES
     [SerializeField] float time;
     [SerializeField] Vector3 change;
     [SerializeField] Vector3 startPosition;
     [SerializeField] Vector3 targetPosition;
     [SerializeField] float duration;
-
+    [SerializeField] Sprite targetedObject;
     [ShowInInspector] Queue<GameObject> receivedNodeQueue;
 
     public float xCoord;
@@ -26,44 +30,17 @@ public class SplineMissile : MonoBehaviour
     Vector2 nextMaxInterval = new Vector2(1.75f, .5f);
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
 
+    TrailRenderer trailRenderer;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        Vector2 RandomSelectedCoords = new Vector2(UnityEngine.Random.Range(UnityEngine.Random.Range(prevMaxInterval.x, nextMaxInterval.x), 
-                                                                            UnityEngine.Random.Range(prevMaxInterval.y, nextMaxInterval.y)), 
-                                                    UnityEngine.Random.Range(UnityEngine.Random.Range(prevMinInterval.x, nextMinInterval.x), 
-                                                                             UnityEngine.Random.Range(prevMinInterval.y, nextMinInterval.y)));
-
-        Debug.Log(RandomSelectedCoords);
-        
-        Vector2 determinator = new Vector2(UnityEngine.Random.Range(0, 1), UnityEngine.Random.Range(0, 1));
-
-        if(determinator == new Vector2 (0, 0))
-        {
-
-        }
-        else if(determinator == new Vector2(0, 1))
-        {
-
-        }
-
-        else if(determinator == new Vector2(1, 0))
-        {
-
-        }
-        else if (determinator == new Vector2(1, 1))
-        {
-
-        }
+        trailRenderer = GetComponent<TrailRenderer>();
     }
 
     void Update()
     {
         MissileMovement();
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log(Mathf.PerlinNoise(xCoord * xFrequency * Time.time, yCoord * yFrequency * Time.deltaTime));
-        }
     }
 
     private void MissileMovement()
@@ -88,8 +65,17 @@ public class SplineMissile : MonoBehaviour
     void ReceiveNodeQueue(Queue<GameObject> queue)
     {
         receivedNodeQueue = queue;
-        Debug.Log("Message Received");
-        startPosition = transform.position;
+        startPosition = receivedNodeQueue.Peek().transform.position;
         targetPosition = receivedNodeQueue.Peek().transform.position;
+        trailRenderer.enabled = true;
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "TARGETED")
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = targetedObject;
+            print("FUCK! " + gameObject.name + " is being targeted");
+        }
     }
 }

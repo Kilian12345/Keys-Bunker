@@ -36,12 +36,13 @@ public class CounterMissileSpawner : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        /*
         if (!col.GetComponent<ExplosionUFO>().hasHit)
         {
             Hit();
             Debug.Log("hit !" + health);
             Debug.Log(col.transform.gameObject);
             col.GetComponent<ExplosionUFO>().hasHit = true;
-        }
+        }*/
     }
 }
