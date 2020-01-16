@@ -71,15 +71,17 @@ void loop() {
   
   potValue = analogRead(potentiometer);
   potentiometerValue = map(potValue, 0, 1023, 0, 255);
-   // potentiometerValueV2 = map(potentiometerValue, 0, 1023, 2, 21);
+  //potentiometerValue = map(potentiometerValue, 230, 689, 0, 255);
+  //potentiometerValueV2 = map(potentiometerValue, 230, 689, 2, 21);
 
   //potentiometerValueV2 = potValue;
-  
-    potentiometerValueV2 = int(potValue*20/1024)+2; //produit en croix
+
+  //potentiometerValue = constrain(int(potValue+230)*2.2239, 0, 1023);
+  potentiometerValueV2 = int((potValue)*20/1024)+2; //produit en croix
   //potentiometerValueV2 = 1;
   
   
-  //Serial.println(potentiometerValueV2);
+  //Serial.println(potValue);
 
   analogWrite(ledPinTres, potentiometerValue);
   Serial.write(potentiometerValueV2);
@@ -96,7 +98,6 @@ void loop() {
   // read the state of the pushbutton value:
   buttonStateDOS = digitalRead(buttonPinDos);
 
-  /*
   // read the state of the magnet Value:
   magnetState = digitalRead(hallSensorPin);
   
@@ -119,7 +120,7 @@ void loop() {
 
     delay(20);
   }
-  */
+
   
   // MAGNET ----------------
 

@@ -91,10 +91,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8481162541166466077}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94f6a9120feb9ee4dbd901cdc8a9a144, type: 3}
+  m_Script: {fileID: 11500000, guid: 636ea5b24491c6b4296b6935c5a724a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.3
+  targetTileSprite: {fileID: 21300000, guid: 62dc47429c9408e4195c0ead43ca26fd, type: 3}
 --- !u!114 &5340283886051659053
 MonoBehaviour:
   m_ObjectHideFlags: 0

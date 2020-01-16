@@ -35,7 +35,7 @@ public class TestArduinoV2 : MonoBehaviour
             try
             {
                 int num = sp.ReadByte();
-                print(num);
+                //print(num);
 
                 numCheck(num);
 
@@ -86,7 +86,7 @@ public class TestArduinoV2 : MonoBehaviour
     }
 
     void Movement()
-    {
+    { 
         transform.Translate(direction * movingSpeed, Space.World);
 
         if (time >= timer)

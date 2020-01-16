@@ -9,7 +9,6 @@ TagManager:
   - Missile
   - TARGETED
   - Tile
-  tags:
   - Counter Measure
   layers:
   - Default
@@ -21,7 +20,7 @@ TagManager:
   - 
   - 
   - Ally
-  - 
+  - Collision
   - 
   - 
   - 
