@@ -318,63 +318,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 565952869}
   m_CullTransparentMesh: 0
---- !u!1 &568127790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 568127791}
-  - component: {fileID: 568127792}
-  m_Layer: 9
-  m_Name: Collider Physique
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &568127791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568127790}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2037755813}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &568127792
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568127790}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.3, y: 3.74}
-  m_EdgeRadius: 0
 --- !u!1 &666405601
 GameObject:
   m_ObjectHideFlags: 0
@@ -486,59 +429,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &964026082 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8481162541166466077, guid: e0228a04bb86471479721bb0a20ced67,
-    type: 3}
-  m_PrefabInstance: {fileID: 1659187385}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &964026083
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964026082}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!61 &964026084
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964026082}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.7321863, y: 0.83678484}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 144.8469, y: 103.259995}
-    newSize: {x: 144.8469, y: 103.259995}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2.4454021, y: 2.4339056}
-  m_EdgeRadius: 0
 --- !u!1 &982597464
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,11 +952,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 2 (Commander Targeting System)
       objectReference: {fileID: 0}
-    - target: {fileID: 8481162541166466077, guid: e0228a04bb86471479721bb0a20ced67,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 8481162541166466067, guid: e0228a04bb86471479721bb0a20ced67,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1127,11 +1012,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 554513338}
-    - target: {fileID: 5340283886051659053, guid: e0228a04bb86471479721bb0a20ced67,
-        type: 3}
-      propertyPath: speed
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0228a04bb86471479721bb0a20ced67, type: 3}
 --- !u!1 &1662455201
@@ -1435,31 +1315,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308713c32451254085925853f7e3be7, type: 3}
---- !u!1 &2037755808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 966817335646012602, guid: 785984ca223a8b04793cbcd05b67ff20,
-    type: 3}
-  m_PrefabInstance: {fileID: 966817337391611171}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2037755809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037755808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2eb4dbc0194f0f4c85819da9cb591f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arduinoManager: {fileID: 0}
---- !u!4 &2037755813 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 966817335646012606, guid: 785984ca223a8b04793cbcd05b67ff20,
-    type: 3}
-  m_PrefabInstance: {fileID: 966817337391611171}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2120231125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1509,11 +1364,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 1 (Counter Measure)
-      objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012602, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: m_TagString
-      value: Counter Measure
       objectReference: {fileID: 0}
     - target: {fileID: 966817335646012606, guid: 785984ca223a8b04793cbcd05b67ff20,
         type: 3}
@@ -1570,13 +1420,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012601, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 966817335646012601, guid: 785984ca223a8b04793cbcd05b67ff20, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 785984ca223a8b04793cbcd05b67ff20, type: 3}
 --- !u!1001 &7961539292137057057
 PrefabInstance:
