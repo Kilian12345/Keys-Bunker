@@ -67,10 +67,12 @@ public class SplineMissile : MonoBehaviour
         if (gameObject.transform.parent.tag == "Missile")
         {
             audioSource.clip = missileAudio;
+            clipLength = audioSource.clip.length;
         }
         if (gameObject.transform.parent.tag == "Plane")
         {
             audioSource.clip = planeAudio;
+            clipLength = audioSource.clip.length;
         }
     }
 
@@ -85,6 +87,10 @@ public class SplineMissile : MonoBehaviour
     private void CheckState()
     {
         if (gameObject.tag == "TARGETED") spriteRenderer.sprite = targetedObject;
+
+        if(isPlaying)
+        {
+        }
     }
 
     private void CheckExploding()
@@ -158,11 +164,24 @@ public class SplineMissile : MonoBehaviour
             cooldownPassed = 0f;
             isPlaying = true;
             audioSource.Play();
+            StartCoroutine(FadeOut(audioSource));
         }
 
         if (other.gameObject.tag == "Base" && isDestroyable)
         {
             IsExploding = true;
+        }
+    }
+    IEnumerator FadeOut(AudioSource sound)
+    {
+        float speed = 0.1f;
+
+        print("yeet");
+        for (float i = 0; i > 0; i -= speed)
+        {
+            print(i);
+            sound.volume = i;
+            yield return null;
         }
     }
 
