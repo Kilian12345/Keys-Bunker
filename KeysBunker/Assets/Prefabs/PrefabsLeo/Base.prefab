@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8255719816419717927}
-  - component: {fileID: 8255719816419717926}
   - component: {fileID: 8230299702891516059}
   - component: {fileID: 1529810703043687136}
-  - component: {fileID: 1988453237348857763}
+  - component: {fileID: 2021378874649731403}
   m_Layer: 8
   m_Name: Base
   m_TagString: Untagged
@@ -34,21 +33,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8255719816419717926
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8255719816419717928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9396dd118971334696f34f748fda726, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counterMissilePrefab: {fileID: 2842533298146556787, guid: ca442dc41f516d24eb039dc1f0255f71,
-    type: 3}
-  baseHealth: 4
 --- !u!61 &8230299702891516059
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -96,7 +80,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &1988453237348857763
+--- !u!114 &2021378874649731403
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +89,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8255719816419717928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1081c9acc5449b742a596ae7fac39b9a, type: 3}
+  m_Script: {fileID: 11500000, guid: d0a530e0490225d44b5b994db4182189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  baseHealth: 4
+  scoreUI: {fileID: 0}
+  healthUI: {fileID: 0}
+  menuUI: {fileID: 0}

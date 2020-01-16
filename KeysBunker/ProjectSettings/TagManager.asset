@@ -9,6 +9,8 @@ TagManager:
   - Missile
   - TARGETED
   - Tile
+  tags:
+  - Counter Measure
   - LISTENING
   - Base
   layers:
