@@ -7,10 +7,7 @@
  int buttonState2 = 0;
  int buttonState3 = 0;
  int buttonState4 = 0;
-
- bool xAxisCheck = true;
- bool yAxisCheck = true;
-
+ 
 void setup() 
 {
   // put your setup code here, to run once:
@@ -33,71 +30,45 @@ void loop()
    buttonState3 = digitalRead(button03);
    buttonState4 = digitalRead(button04);
   
-  if (buttonState1 == HIGH && xAxisCheck == true)
+  if (buttonState1 == HIGH)
   {
     Serial.write(1);
     Serial.flush();
-
-    xAxisCheck = false;
     delay(20);
   } 
-  else
-  {
-    Serial.write(0);
-    Serial.flush();
-    
-    xAxisCheck = true;
-    delay(20);
-  }
 
-  if (buttonState2 == HIGH && xAxisCheck == true)
+  else if (buttonState2 == HIGH)
   {
     Serial.write(2);
     Serial.flush();
-
-    xAxisCheck = false;
     delay(20);
   } 
+
   else
   {
     Serial.write(0);
     Serial.flush();
-    
-    xAxisCheck = true;
     delay(20);
   }
 
-  if (buttonState3  == HIGH && yAxisCheck == true)
+  if (buttonState3  == HIGH)
   {
     Serial.write(3);
     Serial.flush();
-
-    yAxisCheck = false;
     delay(20);
   } 
-  else
-  {
-    Serial.write(0);
-    Serial.flush();
-    
-    yAxisCheck = true;
-    delay(20);
-  }
 
-  if (buttonState4  == HIGH && yAxisCheck == true)
+  else if (buttonState4  == HIGH)
   {
     Serial.write(4);
     Serial.flush();
-
-    yAxisCheck = false;
     delay(20);
   } 
+  
   else
   {
-    Serial.write(0);
+    Serial.write(5);
     Serial.flush();
-    
-    yAxisCheck = true;
     delay(20);
   }
 }

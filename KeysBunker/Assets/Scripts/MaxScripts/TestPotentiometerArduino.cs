@@ -5,11 +5,11 @@ using System.IO.Ports;
 
 public class TestPotentiometerArduino : MonoBehaviour
 {
+    public GameObject missile;
+
     Rigidbody2D rb;
 
     public float ratio;
-
-    private byte[] apple =new byte[32];
 
     private bool started;
 
@@ -28,7 +28,7 @@ public class TestPotentiometerArduino : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        //rb = missile.GetComponent<Rigidbody2D>();
 
         sp.Open();
         sp.ReadTimeout = 1;
@@ -37,7 +37,13 @@ public class TestPotentiometerArduino : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (sp.IsOpen)
+        if (missile == null)
+        {
+            missile = GameObject.FindGameObjectWithTag("Missile");
+            rb = missile.GetComponent<Rigidbody2D>();
+        }
+
+        if (sp.IsOpen && missile != null)
         {
             try
             {
@@ -57,11 +63,6 @@ public class TestPotentiometerArduino : MonoBehaviour
             }
         }
     }
-
-    /*void Update()
-    {
-
-    }*/
 
     void Thrust(int val)
     {
@@ -86,7 +87,7 @@ public class TestPotentiometerArduino : MonoBehaviour
 
     void Steer(int val)
     {
-        if (val >= 22) val = 11;
+        if (val >= 22) return; //useless
 
         if (val <= 11)
         {
@@ -102,6 +103,6 @@ public class TestPotentiometerArduino : MonoBehaviour
             offset = -((val + 1) - 12);
         }
 
-        transform.Rotate(Vector3.forward * steer * offset);
+        missile.transform.Rotate(Vector3.forward * steer * offset);
     }
 }
