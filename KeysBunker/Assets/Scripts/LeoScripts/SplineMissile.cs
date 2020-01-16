@@ -39,18 +39,43 @@ public class SplineMissile : MonoBehaviour
 
     float clipLength;
     float cooldownPassed;
-    
+
+
+    //max script
+    SpriteRenderer mat;
+    bool IsExploding = false;
+
+    [HideInInspector] public bool hasHit = false;
+
     // Start is called before the first frame update
     void Awake()
     {
         trailRenderer = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
+        mat = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         MissileMovement();
         PlaySoundCooldown();
+        CheckExploding();
+    }
+
+    private void CheckExploding()
+    {
+        if (IsExploding)
+        {
+            float value = mat.material.GetFloat("_Cutoff");
+            mat.material.SetFloat("_Cutoff", value - 0.1f);
+
+            if (value <= 0)
+            {
+                IsExploding = false;
+                //mat.material.SetFloat("_Cutoff", 1);
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void PlaySoundCooldown()
@@ -95,7 +120,10 @@ public class SplineMissile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
+        if (other.gameObject.tag == "Counter Measure")
+        {
+            IsExploding = true;
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -110,8 +138,7 @@ public class SplineMissile : MonoBehaviour
 
         if (other.gameObject.tag == "Base" && isDestroyable)
         {
-            GameObject parentObject = gameObject.transform.parent.gameObject;
-            Destroy(parentObject);
+            IsExploding = true;
         }
 
         if (other.gameObject.tag == "TARGETED")
@@ -131,6 +158,8 @@ public class SplineMissile : MonoBehaviour
 
     void OnDestroy()
     {
+        GameObject parentObject = gameObject.transform.parent.gameObject;
+        Destroy(parentObject);
         if (gameObject.transform.parent.tag == "Missile") MissileManager.currentMissiles--;
         MissileManager.currentUFOS--;
     }
