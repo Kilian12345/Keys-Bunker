@@ -28,6 +28,13 @@ public class GridMovement : MonoBehaviour
                 tileSprite.enabled = true;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            collision.gameObject.tag = "TARGETED";
+            SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
+            tileSprite.enabled = true;
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision)

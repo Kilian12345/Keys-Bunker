@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using System;
+using UnityEngine.Audio;
 
 public class SplineMissile : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class SplineMissile : MonoBehaviour
     [SerializeField] Sprite targetedObject;
     [ShowInInspector] Queue<GameObject> receivedNodeQueue;
     AudioSource audioSource;
+    [SerializeField] AudioClip missileAudio;
+    [SerializeField] AudioClip planeAudio;
+    [SerializeField]AudioMixer faderAudioMixer;
+    [SerializeField] float audioFadeDuration;
+    [SerializeField] float audioTargetVolume;
+
 
     public float xCoord;
     public float yCoord;
@@ -42,7 +49,7 @@ public class SplineMissile : MonoBehaviour
 
 
     //max script
-    SpriteRenderer mat;
+    SpriteRenderer spriteRenderer;
     bool IsExploding = false;
 
     [HideInInspector] public bool hasHit = false;
@@ -52,7 +59,19 @@ public class SplineMissile : MonoBehaviour
     {
         trailRenderer = GetComponent<TrailRenderer>();
         audioSource = GetComponent<AudioSource>();
-        mat = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    private void Start()
+    {
+        if (gameObject.transform.parent.tag == "Missile")
+        {
+            audioSource.clip = missileAudio;
+        }
+        if (gameObject.transform.parent.tag == "Plane")
+        {
+            audioSource.clip = planeAudio;
+        }
     }
 
     void Update()
@@ -60,14 +79,20 @@ public class SplineMissile : MonoBehaviour
         MissileMovement();
         PlaySoundCooldown();
         CheckExploding();
+        CheckState();
+    }
+
+    private void CheckState()
+    {
+        if (gameObject.tag == "TARGETED") spriteRenderer.sprite = targetedObject;
     }
 
     private void CheckExploding()
     {
         if (IsExploding)
         {
-            float value = mat.material.GetFloat("_Cutoff");
-            mat.material.SetFloat("_Cutoff", value - 0.1f);
+            float value = spriteRenderer.material.GetFloat("_Cutoff");
+            spriteRenderer.material.SetFloat("_Cutoff", value - 0.1f);
 
             if (value <= 0)
             {
@@ -133,26 +158,11 @@ public class SplineMissile : MonoBehaviour
             cooldownPassed = 0f;
             isPlaying = true;
             audioSource.Play();
-            clipLength = audioSource.clip.length;
         }
 
         if (other.gameObject.tag == "Base" && isDestroyable)
         {
             IsExploding = true;
-        }
-
-        if (other.gameObject.tag == "TARGETED")
-        {
-            gameObject.GetComponent<SpriteRenderer>().sprite = targetedObject;
-            print("FUCK! " + gameObject.name + " is being targeted");
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "LISTENING" || other.gameObject.tag == "TARGETED")
-        {
-            audioSource.Stop();
         }
     }
 

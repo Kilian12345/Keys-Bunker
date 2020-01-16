@@ -9,10 +9,9 @@ TagManager:
   - Missile
   - TARGETED
   - Tile
-  tags:
+  - Base
   - Counter Measure
   - LISTENING
-  - Base
   layers:
   - Default
   - TransparentFX

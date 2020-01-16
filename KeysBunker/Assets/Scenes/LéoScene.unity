@@ -1079,7 +1079,7 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1fe740f11c063c14397233f02229c474, type: 3}
---- !u!1001 &1118983938
+--- !u!1001 &1166407042
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1145,6 +1145,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: maxUFOS
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: maxMissiles
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3719926443897003360, guid: f43c573910d9fcf438159fda6d99972f,
+        type: 3}
+      propertyPath: timeToSpawn
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f43c573910d9fcf438159fda6d99972f, type: 3}
@@ -1298,10 +1313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f65e5358eda4a894ab3a7b939f0e1cbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steer: 1
-  thrust: 5
-  particles: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
-    type: 3}
 --- !u!50 &2016721307
 Rigidbody2D:
   serializedVersion: 4

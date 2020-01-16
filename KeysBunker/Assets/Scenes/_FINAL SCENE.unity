@@ -1140,25 +1140,6 @@ PrefabInstance:
       objectReference: {fileID: 2120231125}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308713c32451254085925853f7e3be7, type: 3}
---- !u!1 &2037755808 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 966817335646012602, guid: 785984ca223a8b04793cbcd05b67ff20,
-    type: 3}
-  m_PrefabInstance: {fileID: 966817337391611171}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2037755809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2037755808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2eb4dbc0194f0f4c85819da9cb591f6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arduinoManager: {fileID: 0}
 --- !u!1 &2120231125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,11 +1189,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 1 (Counter Measure)
-      objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012602, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: m_TagString
-      value: Counter Measure
       objectReference: {fileID: 0}
     - target: {fileID: 966817335646012606, guid: 785984ca223a8b04793cbcd05b67ff20,
         type: 3}
@@ -1269,21 +1245,5 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012601, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: steer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012601, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: thrust
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 966817335646012601, guid: 785984ca223a8b04793cbcd05b67ff20,
-        type: 3}
-      propertyPath: particles
-      value: 
-      objectReference: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
-        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 785984ca223a8b04793cbcd05b67ff20, type: 3}
