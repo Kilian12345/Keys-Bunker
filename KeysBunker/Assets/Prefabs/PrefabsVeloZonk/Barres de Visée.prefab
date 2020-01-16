@@ -109,3 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   timer: 0.2
+  gameManager: {fileID: 0}

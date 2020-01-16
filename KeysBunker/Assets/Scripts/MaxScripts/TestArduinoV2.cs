@@ -18,6 +18,8 @@ public class TestArduinoV2 : MonoBehaviour
     public float timer;
     private float time = 0f;
 
+    public GameManager gameManager;
+
     void Start()
     {
         sp.Open();
@@ -28,7 +30,7 @@ public class TestArduinoV2 : MonoBehaviour
     {
         movingSpeed = speed * Time.deltaTime;
 
-        if (sp.IsOpen)
+        if (sp.IsOpen && !gameManager.gameOver)
         {
             try
             {

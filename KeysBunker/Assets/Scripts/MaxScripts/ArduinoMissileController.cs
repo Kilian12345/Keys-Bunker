@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
 
-public class TestPotentiometerArduino : MonoBehaviour
+public class ArduinoMissileController : MonoBehaviour
 {
     public GameObject missile;
+    public GameObject particles;
+
+    public GameManager gameManager;
 
     Rigidbody2D rb;
 
@@ -18,6 +21,8 @@ public class TestPotentiometerArduino : MonoBehaviour
 
     private int rpm;
 
+    public float thrust; //temporary value
+
     ///\
 
     public float steer;
@@ -27,9 +32,7 @@ public class TestPotentiometerArduino : MonoBehaviour
     SerialPort sp = new SerialPort("COM4", 9600); // put the correct Port name (indicated at bottom right of the arduino editor window)
 
     void Start()
-    {
-        //rb = missile.GetComponent<Rigidbody2D>();
-
+    { 
         sp.Open();
         sp.ReadTimeout = 1;
     }
@@ -39,11 +42,11 @@ public class TestPotentiometerArduino : MonoBehaviour
     {
         if (missile == null)
         {
-            missile = GameObject.FindGameObjectWithTag("Missile");
+            missile = GameObject.FindGameObjectWithTag("Counter Measure");
             rb = missile.GetComponent<Rigidbody2D>();
         }
 
-        if (sp.IsOpen && missile != null)
+        if (sp.IsOpen && missile != null && !gameManager.gameOver)
         {
             try
             {
@@ -56,12 +59,23 @@ public class TestPotentiometerArduino : MonoBehaviour
                 Thrust(value);
 
                 Steer(value);
+
+                if (Input.GetKeyDown(KeyCode.T))
+                {
+                    Respawn();
+                }
+
+                if (Input.GetKey(KeyCode.LeftShift))
+                {
+                    Vector3 dir = Quaternion.AngleAxis(missile.transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
+                    rb.AddForce(dir * thrust);
+                }
             }
             catch (System.Exception)
             {
                 throw;
             }
-        }
+        } 
     }
 
     void Thrust(int val)
@@ -104,5 +118,25 @@ public class TestPotentiometerArduino : MonoBehaviour
         }
 
         missile.transform.Rotate(Vector3.forward * steer * offset);
+    }
+
+    void OnTriggerEnter2D()
+    {
+        // Collision check
+
+        // Score call
+        gameManager.Score(100);
+
+        Respawn();
+    }
+
+    public void Respawn()
+    {
+        GameObject explosion = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(explosion, 2f);
+        rb.velocity = Vector3.zero;
+
+        Instantiate(missile, new Vector3(0, 0, 0), Quaternion.identity);
+        Destroy(missile);
     }
 }
