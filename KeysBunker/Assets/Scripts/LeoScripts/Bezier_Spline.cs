@@ -12,7 +12,7 @@ public class Bezier_Spline : MonoBehaviour
 
     [SerializeField] Color color = Color.white;
     [SerializeField] float width = 0.2f;
-    [SerializeField] int numberOfPoints = 20;
+    [SerializeField] int numberOfPoints = 60;
     LineRenderer lineRenderer;
 
     [SerializeField] int pathComplexityMin;
@@ -23,22 +23,23 @@ public class Bezier_Spline : MonoBehaviour
     [SerializeField] GameObject playerBase;
     [SerializeField] GameObject ufoPrefab;
     [SerializeField] Vector3[] splinePositions;
-    [SerializeField] Vector3 startingPosition;
+    [SerializeField] Vector2 startingPosition;
 
     [SerializeField] List<GameObject> controlPointsList = new List<GameObject>();
     [ShowInInspector] Queue<GameObject> nodeQueue = new Queue<GameObject>();
     
     float minimumNodeAmount;
 
+    [Obsolete]
     void Awake()
     {
-
         controlPointsList.Clear();
         nodeQueue.Clear();
 
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.useWorldSpace = true;
         lineRenderer.material = new Material(Shader.Find("Legacy Shaders/Particles/Additive"));
+        lineRenderer.positionCount = numberOfPoints;
 
         splinePositions = new Vector3[lineRenderer.positionCount];
         lineRenderer.GetPositions(splinePositions);
@@ -58,38 +59,34 @@ public class Bezier_Spline : MonoBehaviour
 
     private void MissileSpawn()
     {
-        /*ufoPrefab.gameObject.tag = gameObject.tag;
-        Debug.Log(gameObject.tag);
-        ufoPrefab.gameObject.name = gameObject.tag;*/
+        Vector2 cornerDeterminator = new Vector2(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
+        int sideDeterminator = UnityEngine.Random.Range(0, 2);
 
-        Vector2 determinator = new Vector2(UnityEngine.Random.Range(0, 2), UnityEngine.Random.Range(0, 2));
-        int coinFlip = UnityEngine.Random.Range(0, 2);
-
-        if (determinator == new Vector2(0, 0))
+        if (cornerDeterminator == new Vector2(0, 0))
         {
-            if (coinFlip == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(-32, 0), -22); }
+            if (sideDeterminator == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(-32, 0), -22); }
             else { startingPosition = new Vector2(-32, UnityEngine.Random.Range(-22, 0)); }
         }
 
-        else if (determinator == new Vector2(0, 1))
+        else if (cornerDeterminator == new Vector2(0, 1))
         {
-            if (coinFlip == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(-32, 0), 22); }
+            if (sideDeterminator == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(-32, 0), 22); }
             else { startingPosition = new Vector2(-32, UnityEngine.Random.Range(0, 22)); }
         }
 
-        else if (determinator == new Vector2(1, 1))
+        else if (cornerDeterminator == new Vector2(1, 1))
         {
-            if (coinFlip == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(32, 0), 22); }
+            if (sideDeterminator == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(32, 0), 22); }
             else { startingPosition = new Vector2(32, UnityEngine.Random.Range(0, 22)); }
         }
 
-        else if (determinator == new Vector2(1, 0))
+        else if (cornerDeterminator == new Vector2(1, 0))
         {
-            if (coinFlip == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(0, 32), -22);}
+            if (sideDeterminator == 0) { startingPosition = new Vector2(UnityEngine.Random.Range(0, 32), -22);}
             else { startingPosition = new Vector2(32, UnityEngine.Random.Range(-22, 0)); }
         }
 
-        ufoPrefab = Instantiate(ufoPrefab, startingPosition, Quaternion.identity);
+        ufoPrefab = Instantiate(ufoPrefab, startingPosition, Quaternion.identity, gameObject.transform);
     }
 
     private void SpawnNodes()

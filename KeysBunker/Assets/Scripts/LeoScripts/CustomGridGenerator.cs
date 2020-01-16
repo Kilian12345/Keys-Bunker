@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
+[ExecuteInEditMode]
 public class CustomGridGenerator : MonoBehaviour
 {
-    int x_Start, y_Start;
+    float x_Start, y_Start;
     public int columnLength, rowLength;
     public float x_Space, y_Space;
     public GameObject prefab;
@@ -21,8 +22,8 @@ public class CustomGridGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        x_Start = (int)transform.position.x;
-        y_Start = (int)transform.position.y;
+        x_Start = transform.position.x;
+        y_Start = transform.position.y;
         GenerateGrid();
         yeet = Instantiate(targetSight, TileList[listPosition].transform.position, Quaternion.identity);
     }
