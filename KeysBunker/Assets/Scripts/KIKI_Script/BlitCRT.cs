@@ -4,13 +4,26 @@ using System.Collections;
 [ExecuteInEditMode]
 public class BlitCRT : MonoBehaviour
 {
-    public Material EffectMaterial;
+    [Header("CRT")]
+    public Material CRTMaterial;
     public float smoothRefresh;
     public float smoothDistort;
     public float interval;
     private float refreshP;
     private float distortion;
     private float sD;
+
+    [Space(30)]
+    [Header("Ripple")]
+    public float MaxAmount = 50f;
+
+    [Range(0, 1)]
+    public float Friction = .9f;
+    public float Radius = 0f;
+
+    private float Amount = 0f;
+
+
     void Start()
     {
         refreshP = 1080.0f;
@@ -19,11 +32,13 @@ public class BlitCRT : MonoBehaviour
     }
     void OnRenderImage(RenderTexture src, RenderTexture dst)
     {
-        EffectMaterial.SetFloat("_ScanPoint", refreshP);
-        EffectMaterial.SetFloat("_Distort", distortion);
+        CRTMaterial.SetFloat("_ScanPoint", refreshP);
+        CRTMaterial.SetFloat("_Distort", distortion);
 
-        if (EffectMaterial != null)
-            Graphics.Blit(src, dst, EffectMaterial);
+
+        if (CRTMaterial != null)
+            Graphics.Blit(src, dst, CRTMaterial);
+
     }
 
     void FixedUpdate()
@@ -33,6 +48,21 @@ public class BlitCRT : MonoBehaviour
         {
             refreshP = 2000.0f;
         }
+    }
+
+    void Update()
+    {
+        if (Input.GetMouseButton(0))
+        {
+            this.Amount = this.MaxAmount;
+            Vector3 pos = Input.mousePosition;
+            this.CRTMaterial.SetFloat("_CenterX", pos.x);
+            this.CRTMaterial.SetFloat("_CenterY", pos.y);
+        }
+
+        this.CRTMaterial.SetFloat("_Radius", this.Radius);
+        this.CRTMaterial.SetFloat("_Amount", this.Amount);
+        this.Amount *= this.Friction;
     }
 
     IEnumerator distort()

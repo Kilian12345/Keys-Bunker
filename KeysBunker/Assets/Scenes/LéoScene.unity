@@ -1344,8 +1344,8 @@ Camera:
   m_GameObject: {fileID: 1662455201}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.12028304, g: 0.16037738, b: 0.14253613, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.04705883, g: 0.054901965, b: 0.17254902, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1438,10 +1438,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfdb0c668f4ce6e46b44e8c578bdd90d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EffectMaterial: {fileID: 2100000, guid: 74de2e1fbe5d9e54f9cf3dc19031dcd3, type: 2}
+  CRTMaterial: {fileID: 2100000, guid: 74de2e1fbe5d9e54f9cf3dc19031dcd3, type: 2}
   smoothRefresh: 10
   smoothDistort: 0
   interval: 0
+  MaxAmount: 10
+  Friction: 0.9
+  Radius: 100
 --- !u!114 &1662455207
 MonoBehaviour:
   m_ObjectHideFlags: 0

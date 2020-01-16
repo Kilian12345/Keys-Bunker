@@ -18,6 +18,17 @@
 		_ScanDensity("Scan density", Range(0.0, 1.0)) = 1.0
 		_ScanThikness("Scan thick", Range(0.0, 500.0)) = 100.0
 		_ScanPoint("Scan point", Range(-200, 2000)) = 0.0
+
+
+			// Ripple
+
+		_MainTex("Texture", 2D) = "white" {}
+		_CenterX("Center X", float) = 300
+		_CenterY("Center Y", float) = 250
+		_Amount("Amount", float) = 25
+		_Radius("Radius", float) = 25
+		_WaveSpeed("Wave Speed", range(.50, 50)) = 20
+		_WaveAmount("Wave Amount", range(0, 20)) = 10
 	}
 		SubShader
 		{
@@ -61,6 +72,15 @@
 				float _ScanThikness;
 				float _ScanPoint;
 
+				//Ripple
+
+				float _CenterX;
+				float _CenterY;
+				float _Amount;
+				float _WaveSpeed;
+				float _WaveAmount;
+				float _Radius;
+
 				v2f vert(appdata v)
 				{
 					v2f o;
@@ -83,7 +103,21 @@
 					//Distort image on y axis
 					i.uv.y += _Distort;
 
-					float4 color = tex2D(_MainTex, i.uv);
+
+					// RIPPLE -----------------------------------
+					fixed2 center = fixed2(_CenterX / _ScreenParams.x, _CenterY / _ScreenParams.y);
+					fixed time = _Time.y * _WaveSpeed;
+					fixed amt = _Amount / 1000;
+
+					fixed2 uv = center.xy - i.uv;
+					uv.x *= (_ScreenParams.x  / _ScreenParams.y) ;
+
+					fixed dist = sqrt(dot(uv, uv)) - sqrt(dot(uv, uv) + _Radius); // test
+					fixed ang = dist * _WaveAmount - time;
+					uv = i.uv + normalize(uv) * sin(ang) * amt;
+
+					float4 color = tex2D(_MainTex, uv);
+					// RIPPLE -----------------------------------
 
 					//Vertical lines
 					float2 ps = i.scr_pos.xy * _ScreenParams.xy / i.scr_pos.w;

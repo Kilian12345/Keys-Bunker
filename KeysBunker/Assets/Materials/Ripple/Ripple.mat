@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CRT
-  m_Shader: {fileID: 4800000, guid: 3b62cefb33dda3c4faeb3312d6697228, type: 3}
+  m_Name: Ripple
+  m_Shader: {fileID: 4800000, guid: b81d7500414a95546aededb95bec0d37, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -35,16 +35,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _DisplacementTex:
-        m_Texture: {fileID: 2800000, guid: b39ef21fa086dbc41a46a6c7680ed433, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _EmissionMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4d95d1e95f64f434786e194bd00384ad, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -61,15 +57,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Amount: 0
-    - _Br: 65
     - _BumpScale: 1
-    - _CenterX: 1236.5
-    - _CenterY: 611
-    - _Contrast: 4.9
+    - _CenterX: 539
+    - _CenterY: 481
     - _Cutoff: 0.5
-    - _Density: 3
     - _DetailNormalMapScale: 1
-    - _Distort: 0
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
@@ -77,24 +69,14 @@ Material:
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OnOff: 1
     - _Parallax: 0.02
-    - _Radius: 100
-    - _ScanDensity: 1
-    - _ScanPoint: 1080
-    - _ScanThikness: 267
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Strength: -0
-    - _Tiles: 500
     - _UVSec: 0
-    - _VertsColor: 0.611
-    - _VertsColor2: 0.6
     - _WaveAmount: 10
     - _WaveSpeed: 20
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _ScansColor: {r: 0, g: 0, b: 0, a: 1}
