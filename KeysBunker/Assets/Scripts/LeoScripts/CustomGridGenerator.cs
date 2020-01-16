@@ -32,7 +32,7 @@ public class CustomGridGenerator : MonoBehaviour
         //CheckInputs();
         //MoveOnGrid();
 
-        if (Input.GetKeyDown(KeyCode.Space))
+       /* if (Input.GetKeyDown(KeyCode.Space))
         {
             if (currentTargetTile == null) TargetTilePosition();
 
@@ -46,8 +46,8 @@ public class CustomGridGenerator : MonoBehaviour
                 Destroy(item);
             };
             TileList.Clear();
-            GenerateGrid();
-        }
+            //GenerateGrid();
+        }*/
     }
 
     void CheckInputs()

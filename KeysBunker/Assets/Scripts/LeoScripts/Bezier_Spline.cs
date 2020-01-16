@@ -182,15 +182,15 @@ public class Bezier_Spline : MonoBehaviour
 
     private void CheckMissileStatus()
     {
-        if (ufoPrefab == null)
-        {
-            Destroy(gameObject);
-        }
-
         if (nodeQueue.Count < minimumNodeAmount)
         {
             Debug.Log("Sent Message");
-            ufoPrefab.gameObject.SendMessage("Integrity");
+            ufoPrefab.gameObject.SendMessage("IsDestroyable");
+        }
+
+        if (ufoPrefab.gameObject == null)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

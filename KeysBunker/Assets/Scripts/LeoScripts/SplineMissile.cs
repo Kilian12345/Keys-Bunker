@@ -18,6 +18,7 @@ public class SplineMissile : MonoBehaviour
     [SerializeField] float duration;
     [SerializeField] Sprite targetedObject;
     [ShowInInspector] Queue<GameObject> receivedNodeQueue;
+    AudioSource audioSource;
 
     public float xCoord;
     public float yCoord;
@@ -31,16 +32,25 @@ public class SplineMissile : MonoBehaviour
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
 
     TrailRenderer trailRenderer;
+
+    bool isDestroyable;
     
     // Start is called before the first frame update
     void Awake()
     {
         trailRenderer = GetComponent<TrailRenderer>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
     {
         MissileMovement();
+    }
+
+    void IsDestroyable()
+    {
+        Debug.Log("Message Received");
+        isDestroyable = true;
     }
 
     private void MissileMovement()
@@ -50,7 +60,8 @@ public class SplineMissile : MonoBehaviour
         if (time <= duration)
         {
             time += Time.deltaTime;
-            transform.position = new Vector2(TweenManager.LinearTween(time, startPosition.x, change.x, duration), TweenManager.LinearTween(time, startPosition.y, change.y, duration));
+            transform.position = new Vector2(TweenManager.LinearTween(time, startPosition.x, change.x, duration), 
+                TweenManager.LinearTween(time, startPosition.y, change.y, duration));
         }
 
         if (time >= duration)
@@ -72,10 +83,37 @@ public class SplineMissile : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
+        if (other.gameObject.tag == "LISTENING")
+        {
+            audioSource.Play();
+        }
+
+        if (other.gameObject.tag == "Base" && isDestroyable)
+        {
+            GameObject parentObject = gameObject.transform.parent.gameObject;
+            Destroy(parentObject);
+        }
+
         if (other.gameObject.tag == "TARGETED")
         {
             gameObject.GetComponent<SpriteRenderer>().sprite = targetedObject;
             print("FUCK! " + gameObject.name + " is being targeted");
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "LISTENING")
+        {
+            audioSource.Play();
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "LISTENING" || other.gameObject.tag == "TARGETED")
+        {
+            audioSource.Stop();
         }
     }
 }

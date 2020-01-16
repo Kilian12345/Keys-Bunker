@@ -16,8 +16,12 @@ public class GridMovement : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Tile")
+        if (collision.gameObject.tag == "Tile" || collision.gameObject.tag == "LISTENING")
         {
+            GameObject tile = collision.gameObject;
+
+            if(collision.gameObject.tag != "TARGETED") tile.tag = "LISTENING";
+
             activeAudioSources = collision.gameObject.GetComponents<AudioSource>();
             foreach (AudioSource audio in activeAudioSources)
             {
@@ -26,11 +30,25 @@ public class GridMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject tile = collision.gameObject;
                 tile.tag = "TARGETED";
                 SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
                 tileSprite.enabled = true;
             }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "TARGETED")
+        {
+            GameObject tile = collision.gameObject;
+            tile.tag = "Tile";
+        }
+
+        if (collision.gameObject.tag == "LISTENING")
+        {
+            GameObject tile = collision.gameObject;
+            tile.tag = "Tile";
         }
     }
 }

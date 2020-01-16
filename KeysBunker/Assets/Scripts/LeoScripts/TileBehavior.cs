@@ -10,6 +10,7 @@ public class TileBehavior : MonoBehaviour
     float cooldown = 1f;
     SpriteRenderer sR;
     Sprite sprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class TileBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (gameObject.tag == "LISTENING") ListenToTile();
         if (gameObject.tag == "TARGETED") Timer();
     }
 

@@ -17,10 +17,11 @@ public class CounterMissileSpawner : MonoBehaviour
 
     void Update()
     {
-        if (CustomGridGenerator.fireMissile)
+     /*   if (CustomGridGenerator.fireMissile)
         {
-            GameObject counterMissile = Instantiate(counterMissilePrefab, transform.position, Quaternion.identity); CustomGridGenerator.fireMissile = false;
-        }
+            GameObject counterMissile = Instantiate(counterMissilePrefab, transform.position, Quaternion.identity);
+            CustomGridGenerator.fireMissile = false;
+        }*/
 
         if (health <= 0)
         {

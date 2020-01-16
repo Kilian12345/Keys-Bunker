@@ -39,7 +39,10 @@ public class MissileManager : MonoBehaviour
     void Update()
     {
      //   GameObject primitive = Instantiate(GameObject.CreatePrimitive(PrimitiveType.Capsule), Vector3.zero, Quaternion.identity);
-        MissileSpawnUpdate();
+        //MissileSpawnUpdate();
+
+        if(Input.GetKeyDown(KeyCode.A)) SpawnMissile();
+
     }
 
     private void MissileSpawnUpdate()
@@ -60,8 +63,8 @@ public class MissileManager : MonoBehaviour
     {
         GameObject bezier = Instantiate(bezierGenerator, transform.position, Quaternion.identity);
         int whichTag = UnityEngine.Random.Range(0, 3);
-        bezier.gameObject.tag = ufoType[whichTag];
-        bezier.gameObject.name = ufoType[whichTag] + " path";
+        bezier.gameObject.tag = "Missile"; //ufoType[whichTag];
+        bezier.gameObject.name = "MISSILE PATH";  //ufoType[whichTag] + " path";
         bezier.SetActive(true);
     }
 }
