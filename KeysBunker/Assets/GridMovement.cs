@@ -21,7 +21,6 @@ public class GridMovement : MonoBehaviour
             tile.tag = "TARGETED";
             SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
             tileSprite.enabled = true;
-            tileSprite.sprite = targetTileSprite;
 
         }
     }
