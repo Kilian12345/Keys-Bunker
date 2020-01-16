@@ -6,6 +6,7 @@ public class GridMovement : MonoBehaviour
 {
     public float speed;
     public Sprite targetTileSprite;
+    AudioSource[] activeAudioSources;
 
     // Update is called once per frame
     void Update()
@@ -15,13 +16,21 @@ public class GridMovement : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Tile" && Input.GetKeyDown(KeyCode.Space))
+        if (collision.gameObject.tag == "Tile")
         {
-            GameObject tile = collision.gameObject;
-            tile.tag = "TARGETED";
-            SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
-            tileSprite.enabled = true;
+            activeAudioSources = collision.gameObject.GetComponents<AudioSource>();
+            foreach (AudioSource audio in activeAudioSources)
+            {
+                audio.Play();
+            }
 
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GameObject tile = collision.gameObject;
+                tile.tag = "TARGETED";
+                SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
+                tileSprite.enabled = true;
+            }
         }
     }
 }
