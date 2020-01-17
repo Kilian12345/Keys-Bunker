@@ -14,12 +14,10 @@ public class CollisionDetection : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    {
-        // Collision check
-         
-        // Score call
-        if (col.gameObject.tag != "Miesfqdg")
-            arduinoManager.gameManager.Score(100);
+    { 
+        if (col.gameObject.tag == "Missile") arduinoManager.gameManager.Score(100);
+
+        if (col.gameObject.tag == "Plane") arduinoManager.gameManager.Score(-100);
 
         arduinoManager.Respawn();
     }

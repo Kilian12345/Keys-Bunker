@@ -14,6 +14,8 @@ public class TestArduinoV2 : MonoBehaviour
     private int wheel2CurNum = 0;
 
     private Vector2 direction;
+    private Rigidbody2D rb;
+    public float rbSpeed;
 
     public float timer;
     private float time = 0f;
@@ -24,6 +26,8 @@ public class TestArduinoV2 : MonoBehaviour
     {
         sp.Open();
         sp.ReadTimeout = 1;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
@@ -35,7 +39,7 @@ public class TestArduinoV2 : MonoBehaviour
             try
             {
                 int num = sp.ReadByte();
-                print(num);
+                //print(num);
 
                 numCheck(num);
 
@@ -87,7 +91,8 @@ public class TestArduinoV2 : MonoBehaviour
 
     void Movement()
     {
-        transform.Translate(direction * movingSpeed, Space.World);
+        //transform.Translate(direction * movingSpeed, Space.World);
+        rb.AddForce(direction * rbSpeed);
 
         if (time >= timer)
         {

@@ -12,9 +12,12 @@ public class ArduinoMissileController : MonoBehaviour
 
     Rigidbody2D rb;
 
+    ///\
+    [Header("Thrusting")]
     public float ratio;
 
     private bool started;
+    private bool passed;
 
     private float timer;
     private float currentTime;
@@ -23,8 +26,16 @@ public class ArduinoMissileController : MonoBehaviour
 
     public float thrust; //temporary value
 
-    ///\
+    ///test\
+    [Header("Testing")]
+    public float powerAmount;
+    private float power;
+    public float timeReduce;
 
+    private bool ok = true;
+
+    ///\
+    [Header("Steering")]
     public float steer;
 
     private int offset;
@@ -56,7 +67,7 @@ public class ArduinoMissileController : MonoBehaviour
 
                 //missile controls
 
-                Thrust(value);
+                Thruster(value);
 
                 Steer(value);
 
@@ -70,6 +81,8 @@ public class ArduinoMissileController : MonoBehaviour
                     Vector3 dir = Quaternion.AngleAxis(missile.transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
                     rb.AddForce(dir * thrust);
                 }
+
+                missile.transform.Rotate(Vector3.forward * (-steer * 2f) * (Input.GetAxis("Horizontal")));
             }
             catch (System.Exception)
             {
@@ -78,56 +91,81 @@ public class ArduinoMissileController : MonoBehaviour
         } 
     }
 
+    void Thruster(int val)
+    {
+        Vector3 dir = Quaternion.AngleAxis(missile.transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
+        rb.AddForce(dir * power);
+
+        if (power > 0)
+        {
+            power -= Time.deltaTime * timeReduce;
+            //Debug.Log(Time.deltaTime * timeReduce);
+        }
+
+        if (val == 1 && ok)
+        {
+            power += powerAmount;
+            ok = false;
+        }
+
+        else if (val == 0)
+        {
+            ok = true;
+        }
+    }
+
     void Thrust(int val)
     {
         if (val == 1)
         {
-            if (started)
+            if (passed == false)
             {
-                currentTime = timer;
+                if (started)
+                {
+                    currentTime = timer;
 
-                rpm = Mathf.RoundToInt(currentTime * 60f);
+                    rpm = Mathf.RoundToInt(currentTime * 60f);
+                }
 
-                Vector3 dir = Quaternion.AngleAxis(transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
-                rb.AddForce(dir * (rpm / ratio));
+                timer = 0;
+                started = true;
+                passed = true;
             }
 
-            timer = 0;
-            started = true;
+            Vector3 dir = Quaternion.AngleAxis(missile.transform.eulerAngles.z + 90, Vector3.forward) * Vector3.right;
+            rb.AddForce(dir * (thrust + (rpm / ratio)));
+        }
+
+        else if (val == 0)
+        {
+            passed = false;
         }
 
         timer += timer * Time.deltaTime;
     }
 
     void Steer(int val)
-    {
-        if (val >= 22) return; //useless
-
-        if (val <= 11)
+    { 
+        if (val < 11 && val >= 2)
         {
             //positif droite
 
             offset = 11 - (val - 1);
         }
 
-        else if (val >= 12)
+        else if (val > 12)
         {
             //négatif gauche
 
             offset = -((val + 1) - 12);
         }
 
-        missile.transform.Rotate(Vector3.forward * steer * offset);
-    }
+        else if (val == 11 || val == 12)
+        {
+            offset = 0;
+        }
 
-    void OnTriggerEnter2D()
-    {
-        // Collision check
-
-        // Score call
-        gameManager.Score(100);
-
-        Respawn();
+        missile.transform.Rotate(Vector3.forward * steer * (-offset));
     }
 
     public void Respawn()
