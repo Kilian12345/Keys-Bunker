@@ -47,7 +47,6 @@ public class SplineMissile : MonoBehaviour
     float clipLength;
     float cooldownPassed;
 
-
     //max script
     SpriteRenderer spriteRenderer;
     bool IsExploding = false;
@@ -164,7 +163,7 @@ public class SplineMissile : MonoBehaviour
             cooldownPassed = 0f;
             isPlaying = true;
             audioSource.Play();
-            StartCoroutine(FadeOut(audioSource));
+            StartCoroutine(AudioFadeOut.FadeOut(audioSource, audioFadeDuration));
         }
 
         if (other.gameObject.tag == "Base" && isDestroyable)
@@ -172,17 +171,24 @@ public class SplineMissile : MonoBehaviour
             IsExploding = true;
         }
     }
-    IEnumerator FadeOut(AudioSource sound)
-    {
-        float speed = 0.1f;
 
-        print("yeet");
-        for (float i = 0; i > 0; i -= speed)
+    public static class AudioFadeOut
+    {
+        public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
         {
-            print(i);
-            sound.volume = i;
-            yield return null;
+            float startVolume = audioSource.volume;
+
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+                yield return null;
+            }
+
+            audioSource.Stop();
+            audioSource.volume = startVolume;
         }
+
     }
 
     void OnDestroy()
