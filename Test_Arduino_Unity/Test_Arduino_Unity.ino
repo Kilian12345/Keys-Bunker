@@ -3,10 +3,14 @@
  int button03 = 7;
  int button04 = 5;
 
+ int pushButton = 12;
+
  int buttonState1 = 0;
  int buttonState2 = 0;
  int buttonState3 = 0;
  int buttonState4 = 0;
+
+ int pushButtonState = 0;
  
 void setup() 
 {
@@ -19,6 +23,8 @@ void setup()
 
   pinMode(button03, INPUT);
   pinMode(button04, INPUT);
+
+  pinMode(pushButton, INPUT);
 }
 
 void loop() 
@@ -29,6 +35,8 @@ void loop()
    buttonState2 = digitalRead(button02);
    buttonState3 = digitalRead(button03);
    buttonState4 = digitalRead(button04);
+
+   pushButtonState = digitalRead(pushButton);
   
   if (buttonState1 == HIGH)
   {
@@ -68,6 +76,13 @@ void loop()
   else
   {
     Serial.write(5);
+    Serial.flush();
+    delay(20);
+  }
+
+  if (pushButtonState == HIGH)
+  {
+    Serial.write(6);
     Serial.flush();
     delay(20);
   }

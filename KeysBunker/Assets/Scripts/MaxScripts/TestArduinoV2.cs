@@ -5,6 +5,8 @@ using System.IO.Ports;
 
 public class TestArduinoV2 : MonoBehaviour
 {
+    public static bool targeted;
+
     public float speed;
     private float movingSpeed;
 
@@ -87,6 +89,11 @@ public class TestArduinoV2 : MonoBehaviour
         {
             wheel2CurNum = 0;
         } 
+
+        if (n == 6)
+        {
+            targeted = true;
+        }
     }
 
     void Movement()
