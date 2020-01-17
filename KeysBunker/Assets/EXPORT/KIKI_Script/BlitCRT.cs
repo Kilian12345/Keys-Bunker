@@ -23,6 +23,8 @@ public class BlitCRT : MonoBehaviour
 
     private float Amount = 0f;
 
+    public bool isActive;
+    public Vector2 pos;
 
     void Start()
     {
@@ -52,15 +54,12 @@ public class BlitCRT : MonoBehaviour
 
     void Update()
     {
-        /*if (Input.GetMouseButton(0))
+        if (isActive == true)
         {
-            this.Amount = this.MaxAmount;
-            Vector3 pos = Input.mousePosition;
-            this.CRTMaterial.SetFloat("_CenterX", pos.x);
-            this.CRTMaterial.SetFloat("_CenterY", pos.y);
-        }*/
+            StartCoroutine(wait());
+        }
 
-        this.CRTMaterial.SetFloat("_Radius", this.Radius);
+            this.CRTMaterial.SetFloat("_Radius", this.Radius);
         this.CRTMaterial.SetFloat("_Amount", this.Amount);
         this.Amount *= this.Friction;
     }
@@ -87,5 +86,19 @@ public class BlitCRT : MonoBehaviour
     {
         sD = smoothDistort * Random.Range(0.2f, 1.0f);
         return Random.Range(min, max);
+    }
+
+
+    IEnumerator wait()
+    {
+
+            this.Amount = this.MaxAmount;
+            //Vector3 pos = Input.mousePosition;
+            this.CRTMaterial.SetFloat("_CenterX", pos.x);
+            this.CRTMaterial.SetFloat("_CenterY", pos.y);
+
+        yield return new WaitForSeconds(0.1f);
+        isActive = false;
+
     }
 }
