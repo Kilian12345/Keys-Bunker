@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   steer: 5
   thrust: 10
-  particles: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
+  particles: {fileID: 7644220273683985915, guid: 8a4c446b98a2f414386f4a6a7d8ae3f0,
     type: 3}
 --- !u!1 &966817337220037136
 GameObject:
