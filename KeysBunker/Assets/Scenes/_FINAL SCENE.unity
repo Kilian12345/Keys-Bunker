@@ -1148,16 +1148,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5340283886051659053, guid: e0228a04bb86471479721bb0a20ced67,
-        type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 554513338}
     - target: {fileID: 3621549364034084446, guid: e0228a04bb86471479721bb0a20ced67,
         type: 3}
       propertyPath: speed
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 5340283886051659053, guid: e0228a04bb86471479721bb0a20ced67,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 554513338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0228a04bb86471479721bb0a20ced67, type: 3}
 --- !u!1 &1662455201
@@ -1422,21 +1422,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager (HQ)
       objectReference: {fileID: 0}
-    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
+    - target: {fileID: 8255719816419717928, guid: d308713c32451254085925853f7e3be7,
         type: 3}
-      propertyPath: scoreUI
-      value: 
-      objectReference: {fileID: 565952869}
-    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
-        type: 3}
-      propertyPath: healthUI
-      value: 
-      objectReference: {fileID: 1372136664}
-    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
-        type: 3}
-      propertyPath: menuUI
-      value: 
-      objectReference: {fileID: 2120231125}
+      propertyPath: m_TagString
+      value: Base
+      objectReference: {fileID: 0}
     - target: {fileID: 8255719816419717927, guid: d308713c32451254085925853f7e3be7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1492,6 +1482,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
+        type: 3}
+      propertyPath: scoreUI
+      value: 
+      objectReference: {fileID: 565952869}
+    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
+        type: 3}
+      propertyPath: healthUI
+      value: 
+      objectReference: {fileID: 1372136664}
+    - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
+        type: 3}
+      propertyPath: menuUI
+      value: 
+      objectReference: {fileID: 2120231125}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d308713c32451254085925853f7e3be7, type: 3}
 --- !u!1 &2120231125

@@ -52,13 +52,13 @@ public class BlitCRT : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        /*if (Input.GetMouseButton(0))
         {
             this.Amount = this.MaxAmount;
             Vector3 pos = Input.mousePosition;
             this.CRTMaterial.SetFloat("_CenterX", pos.x);
             this.CRTMaterial.SetFloat("_CenterY", pos.y);
-        }
+        }*/
 
         this.CRTMaterial.SetFloat("_Radius", this.Radius);
         this.CRTMaterial.SetFloat("_Amount", this.Amount);
