@@ -1,8 +1,7 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Sirenix.OdinInspector;
-using System;
 using UnityEngine.Audio;
 
 public class SplineMissile : MonoBehaviour
@@ -23,18 +22,18 @@ public class SplineMissile : MonoBehaviour
     AudioSource audioSource;
     [SerializeField] AudioClip missileAudio;
     [SerializeField] AudioClip planeAudio;
-    [SerializeField]AudioMixer faderAudioMixer;
-    [SerializeField] float audioFadeDuration;
-    [SerializeField] float audioTargetVolume;
+    [SerializeField] AudioMixer faderAudioMixer;
+    [SerializeField] float audioFadeInDuration;
+    [SerializeField] float audioFadeOutDuration;
 
 
-    public float xCoord;
-    public float yCoord;
-    public float xFrequency;
-    public float yFrequency;
+    float xCoord = 1;
+    float yCoord = 1;
+    float xFrequency = 2;
+    float yFrequency = 2;
 
-    Vector2 prevMaxInterval = new Vector2(2,1);
-    Vector2 prevMinInterval = new Vector2(-2,-1);
+    Vector2 prevMaxInterval = new Vector2(2, 1);
+    Vector2 prevMinInterval = new Vector2(-2, -1);
 
     Vector2 nextMaxInterval = new Vector2(1.75f, .5f);
     Vector2 nextMinInterval = new Vector2(-1.75f, -.5f);
@@ -67,11 +66,13 @@ public class SplineMissile : MonoBehaviour
         {
             audioSource.clip = missileAudio;
             clipLength = audioSource.clip.length;
+            //audioSource.volume = 0f;
         }
         if (gameObject.transform.parent.tag == "Plane")
         {
             audioSource.clip = planeAudio;
             clipLength = audioSource.clip.length;
+            //audioSource.volume = 0f;
         }
     }
 
@@ -87,7 +88,7 @@ public class SplineMissile : MonoBehaviour
     {
         if (gameObject.tag == "TARGETED") spriteRenderer.sprite = targetedObject;
 
-        if(isPlaying)
+        if (isPlaying)
         {
         }
     }
@@ -127,7 +128,7 @@ public class SplineMissile : MonoBehaviour
         if (time <= duration)
         {
             time += Time.deltaTime;
-            transform.position = new Vector2(TweenManager.LinearTween(time, startPosition.x, change.x, duration), 
+            transform.position = new Vector2(TweenManager.LinearTween(time, startPosition.x, change.x, duration),
                 TweenManager.LinearTween(time, startPosition.y, change.y, duration));
         }
 
@@ -162,8 +163,7 @@ public class SplineMissile : MonoBehaviour
         {
             cooldownPassed = 0f;
             isPlaying = true;
-            audioSource.Play();
-            StartCoroutine(AudioFadeOut.FadeOut(audioSource, audioFadeDuration));
+            StartCoroutine(FadeIn(audioSource, audioFadeInDuration));
         }
 
         if (other.gameObject.tag == "Base" && isDestroyable)
@@ -172,23 +172,38 @@ public class SplineMissile : MonoBehaviour
         }
     }
 
-    public static class AudioFadeOut
+    public IEnumerator FadeIn(AudioSource audioSource, float FadeTime)
     {
-        public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+        float startVolume = 0.2f;
+
+        audioSource.volume = 0;
+        audioSource.Play();
+
+        while (audioSource.volume < 1.0f)
         {
-            float startVolume = audioSource.volume;
+            audioSource.volume += startVolume * Time.deltaTime / FadeTime;
 
-            while (audioSource.volume > 0)
-            {
-                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
-
-                yield return null;
-            }
-
-            audioSource.Stop();
-            audioSource.volume = startVolume;
+            yield return null;
         }
 
+        audioSource.volume = 1f;
+        if (gameObject.transform.parent.tag == "Plane") StartCoroutine(FadeOut(audioSource, audioFadeOutDuration));
+    }
+
+    public IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+    {
+        float startVolume = audioSource.volume;
+
+        while (audioSource.volume > 0)
+        {
+            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+            yield return null;
+        }
+
+        audioSource.Stop();
+        isPlaying = false;
+        audioSource.volume = startVolume;
     }
 
     void OnDestroy()

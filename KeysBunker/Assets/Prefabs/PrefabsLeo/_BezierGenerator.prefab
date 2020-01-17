@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4494709701688026614}
   - component: {fileID: 4494709701688026613}
   m_Layer: 0
-  m_Name: Bezier_Spline
+  m_Name: _BezierGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

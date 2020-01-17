@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3719926443897003367}
   - component: {fileID: 3719926443897003360}
   m_Layer: 0
-  m_Name: MissileSpawner
+  m_Name: _MissileSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,12 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bezierCurve: {fileID: 4494709701688026612, guid: ec83dcfce0a3ac74c8ea96cba8482381,
     type: 3}
-  maxNumberOfUFOS: 50
-  currTotalUFOS: 25
-  numberOfMissiles: 25
-  numberOfOthers: 0
-  baseProportionOfMissiles: 0
-  baseProportionOfOthers: 0
+  maxUFOS: 0
+  proportionOfUFOS: 0
+  maxMissiles: 0
+  proportionOfMissiles: 0
+  missileSpawnChance: 0
   ufoType: []
   timeToSpawn: 4
   timePassed: 0
+  yeet: 0
