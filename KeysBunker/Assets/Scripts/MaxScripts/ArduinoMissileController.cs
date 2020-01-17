@@ -82,7 +82,7 @@ public class ArduinoMissileController : MonoBehaviour
                     rb.AddForce(dir * thrust);
                 }
 
-                //missile.transform.Rotate(Vector3.forward * (-steer * 2f) * (Input.GetAxis("Horizontal")));
+                missile.transform.Rotate(Vector3.forward * (-steer * 2f) * (Input.GetAxis("Horizontal")));
             }
             catch (System.Exception)
             {

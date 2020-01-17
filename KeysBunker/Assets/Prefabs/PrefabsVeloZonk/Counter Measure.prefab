@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 568127791}
   - component: {fileID: 568127792}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Collider Physique
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 966817335646012600}
   - component: {fileID: 966817335646012605}
   - component: {fileID: 2037755809}
+  - component: {fileID: 319490133}
   m_Layer: 8
   m_Name: Counter Measure
   m_TagString: Counter Measure
@@ -219,6 +220,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arduinoManager: {fileID: 0}
+--- !u!114 &319490133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966817335646012602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65e5358eda4a894ab3a7b939f0e1cbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steer: 5
+  thrust: 10
+  particles: {fileID: 5330461160784247906, guid: 7d91abe658137814da7e9c062b534479,
+    type: 3}
 --- !u!1 &966817337220037136
 GameObject:
   m_ObjectHideFlags: 0
