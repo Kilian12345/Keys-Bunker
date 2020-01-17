@@ -108,7 +108,7 @@ void loop() {
     Serial.write(1);
     Serial.flush();
 
-    delay(20);
+    delay(10);
   } 
   
   else
@@ -118,7 +118,7 @@ void loop() {
     Serial.write(0);
     Serial.flush();
 
-    delay(20);
+    delay(10);
   }
 
   

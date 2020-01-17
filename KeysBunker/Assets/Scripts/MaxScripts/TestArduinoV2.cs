@@ -41,7 +41,7 @@ public class TestArduinoV2 : MonoBehaviour
             try
             {
                 int num = sp.ReadByte();
-                print(num);
+                //print(num);
 
                 numCheck(num);
 

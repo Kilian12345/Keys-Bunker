@@ -26,13 +26,19 @@ public class GameManager : MonoBehaviour
     }
 
     void Update()
-    {
+    { 
         healthUI.GetComponent<Text>().text = (health).ToString() + " : Health";
         scoreUI.GetComponent<Text>().text = "Score : " + (score).ToString();
 
-        print(score);
+        print("score :" + score);
 
         if (health <= 0)
+        {
+            gameOver = true;
+            menuUI.SetActive(true);
+        }
+
+        if (score <= -500)
         {
             gameOver = true;
             menuUI.SetActive(true);

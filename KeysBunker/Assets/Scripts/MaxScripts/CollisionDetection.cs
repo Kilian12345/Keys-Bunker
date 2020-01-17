@@ -8,16 +8,19 @@ public class CollisionDetection : MonoBehaviour
 
     public ArduinoMissileController arduinoManager;
 
+    int value = 100;
+    int value2 = -100;
+
     void Start()
     {
         arduinoManager = GameObject.Find("Arduino Manager").GetComponent<ArduinoMissileController>();
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    { 
-        if (col.gameObject.tag == "Missile") arduinoManager.gameManager.Score(100);
+    {
+        if (col.gameObject.transform.parent.tag == "Missile") arduinoManager.gameManager.Score(value);
 
-        if (col.gameObject.tag == "Plane") arduinoManager.gameManager.Score(-100);
+        if (col.gameObject.transform.parent.tag == "Plane") arduinoManager.gameManager.Score(value2);
 
         arduinoManager.Respawn();
     }
