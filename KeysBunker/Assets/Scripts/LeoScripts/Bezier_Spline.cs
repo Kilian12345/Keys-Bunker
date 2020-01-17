@@ -182,7 +182,6 @@ public class Bezier_Spline : MonoBehaviour
     {
         if (nodeQueue.Count < minimumNodeAmount)
         {
-            Debug.Log("Sent Message");
             ufoPrefab.gameObject.SendMessage("IsDestroyable");
         }
 

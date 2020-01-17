@@ -40,7 +40,7 @@ public class SplineMissile : MonoBehaviour
 
     TrailRenderer trailRenderer;
 
-    bool isDestroyable;
+    public bool isDestroyable;
     bool isPlaying;
 
     float clipLength;
@@ -97,7 +97,6 @@ public class SplineMissile : MonoBehaviour
     {
         if (IsExploding)
         {
-            print("yeet");
             float value = spriteRenderer.material.GetFloat("_Cutoff");
             spriteRenderer.material.SetFloat("_Cutoff", value - 0.1f);
 
@@ -118,7 +117,6 @@ public class SplineMissile : MonoBehaviour
 
     void IsDestroyable()
     {
-        Debug.Log("Message Received");
         isDestroyable = true;
     }
 
@@ -170,6 +168,7 @@ public class SplineMissile : MonoBehaviour
         if (other.gameObject.tag == "Base" && isDestroyable)
         {
             IsExploding = true;
+            if(gameObject.transform.parent.tag == "Missile") GameObject.FindGameObjectWithTag("Base").gameObject.SendMessage("MessageReceiver");
         }
     }
 

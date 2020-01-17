@@ -6,10 +6,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    bool destroy;
+
     public int baseHealth;
     private int health;
 
-    private int score = 0;
+    int score = 0;
 
     public GameObject scoreUI;
     public GameObject healthUI;
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
     {
         healthUI.GetComponent<Text>().text = (health).ToString() + " : Health";
         scoreUI.GetComponent<Text>().text = "Score : " + (score).ToString();
+
+        print(score);
 
         if (health <= 0)
         {
@@ -50,14 +54,20 @@ public class GameManager : MonoBehaviour
         score += value;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
+    void MessageReceiver()
     {
-        if (!col.GetComponent<SplineMissile>().hasHit)
+        print("I good");
+        destroy = true;
+    }
+
+    void OnTriggerStay2D(Collider2D col)
+    {
+        if (!col.GetComponent<SplineMissile>().hasHit && destroy)
         {
             Hit();
             Debug.Log("hit !" + health);
-            Debug.Log(col.transform.gameObject);
             col.GetComponent<SplineMissile>().hasHit = true;
+            destroy = false;
         }
     }
 
