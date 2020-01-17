@@ -86,10 +86,10 @@ public class SplineMissile : MonoBehaviour
 
     private void CheckState()
     {
-        if (gameObject.tag == "TARGETED") spriteRenderer.sprite = targetedObject;
-
-        if (isPlaying)
+        if (gameObject.tag == "TARGETED")
         {
+            spriteRenderer.color = Color.red;
+            spriteRenderer.sprite = targetedObject;
         }
     }
 

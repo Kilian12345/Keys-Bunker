@@ -45,12 +45,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bezierCurve: {fileID: 4494709701688026612, guid: ec83dcfce0a3ac74c8ea96cba8482381,
     type: 3}
-  maxUFOS: 0
+  maxUFOS: 10
   proportionOfUFOS: 0
-  maxMissiles: 0
+  maxMissiles: 5
   proportionOfMissiles: 0
   missileSpawnChance: 0
   ufoType: []
-  timeToSpawn: 4
+  timeToSpawn: 10
   timePassed: 0
   yeet: 0
