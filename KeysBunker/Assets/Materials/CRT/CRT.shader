@@ -29,6 +29,7 @@
 		_Radius("Radius", float) = 25
 		_WaveSpeed("Wave Speed", range(.50, 50)) = 20
 		_WaveAmount("Wave Amount", range(0, 20)) = 10
+
 	}
 		SubShader
 		{
@@ -81,6 +82,7 @@
 				float _WaveAmount;
 				float _Radius;
 
+
 				v2f vert(appdata v)
 				{
 					v2f o;
@@ -90,6 +92,7 @@
 					o.scr_pos = ComputeScreenPos(o.vertex);
 					return o;
 				}
+
 
 				float4 frag(v2f i) : SV_Target
 				{
@@ -105,6 +108,50 @@
 
 
 					// RIPPLE -----------------------------------
+
+					/*//Sawtooth function to pulse from centre.
+						float offset = (_Time.y- floor(_Time.y))/_Time.y;
+						float CurrentTime = (_Time.y)*(offset);    
+    
+						float3 WaveParams = float3(10.0, 0.8, 0.1 ); 
+    
+						float ratio = (_ScreenParams.y/_ScreenParams.x);
+    
+						//Use this if you want to place the centre with the mouse instead
+						//vec2 WaveCentre = vec2( iMouse.xy / iResolution.xy );
+       
+						fixed2 WaveCentre = fixed2(_CenterX / _ScreenParams.x, _CenterY / _ScreenParams.y);
+						//fixed2 WaveCentre = fixed2(0.5, 0.5);
+						//WaveCentre.y *= ratio; 
+   
+						float2 texCoord = i.uv.xy / _ScreenParams.xy;      
+						texCoord.y *= ratio;    
+						float Dist = distance(texCoord, WaveCentre);
+    
+	
+						fixed4 color = tex2D(_MainTex, i.uv);
+    
+					//Only distort the pixels within the parameter distance from the centre
+					if ((Dist <= ((CurrentTime) + (WaveParams.z))) && 
+						(Dist >= ((CurrentTime) - (WaveParams.z)))) 
+						{
+							//The pixel offset distance based on the input parameters
+							float Diff = (Dist - CurrentTime); 
+							float ScaleDiff = (1.0 - pow(abs(Diff * WaveParams.x), WaveParams.y)); 
+							float DiffTime = (Diff  * ScaleDiff);
+        
+							//The direction of the distortion
+							float2 DiffTexCoord = normalize(texCoord - WaveCentre);         
+        
+							//Perform the distortion and reduce the effect over time
+							texCoord += ((DiffTexCoord * DiffTime) / (CurrentTime * Dist * 40.0));
+							color = tex2D(_MainTex, i.uv);
+        
+							//Blow out the color and reduce the effect over time
+							color += (color * ScaleDiff) / (CurrentTime * Dist * 40.0);
+						} */
+
+
 					fixed2 center = fixed2(_CenterX / _ScreenParams.x, _CenterY / _ScreenParams.y);
 					fixed time = _Time.y * _WaveSpeed;
 					fixed amt = _Amount / 1000;
@@ -112,11 +159,16 @@
 					fixed2 uv = center.xy - i.uv;
 					uv.x *= (_ScreenParams.x  / _ScreenParams.y) ;
 
-					fixed dist = sqrt(dot(uv, uv)) - sqrt(dot(uv, uv) + _Radius); // test
+
+					fixed dist = sqrt(dot(uv, uv)) + _Radius; // test
+
 					fixed ang = dist * _WaveAmount - time;
 					uv = i.uv + normalize(uv) * sin(ang) * amt;
 
 					float4 color = tex2D(_MainTex, uv);
+
+
+
 					// RIPPLE -----------------------------------
 
 					//Vertical lines

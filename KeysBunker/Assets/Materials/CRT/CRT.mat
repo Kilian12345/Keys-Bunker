@@ -63,8 +63,8 @@ Material:
     - _Amount: 0
     - _Br: 65
     - _BumpScale: 1
-    - _CenterX: 1291
-    - _CenterY: 737
+    - _CenterX: 348
+    - _CenterY: 171.5
     - _Contrast: 4.9
     - _Cutoff: 0.5
     - _Density: 3
@@ -79,7 +79,7 @@ Material:
     - _OcclusionStrength: 1
     - _OnOff: 1
     - _Parallax: 0.02
-    - _Radius: 100
+    - _Radius: 1000
     - _ScanDensity: 1
     - _ScanPoint: 1080
     - _ScanThikness: 267

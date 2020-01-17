@@ -1443,8 +1443,8 @@ MonoBehaviour:
   smoothDistort: 0
   interval: 0
   MaxAmount: 10
-  Friction: 0.9
-  Radius: 100
+  Friction: 0.68
+  Radius: 1000
 --- !u!114 &1662455207
 MonoBehaviour:
   m_ObjectHideFlags: 0
