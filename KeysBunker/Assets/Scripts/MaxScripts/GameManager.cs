@@ -52,12 +52,12 @@ public class GameManager : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (!col.GetComponent<ExplosionUFO>().hasHit)
+        if (!col.GetComponent<SplineMissile>().hasHit)
         {
             Hit();
             Debug.Log("hit !" + health);
             Debug.Log(col.transform.gameObject);
-            col.GetComponent<ExplosionUFO>().hasHit = true;
+            col.GetComponent<SplineMissile>().hasHit = true;
         }
     }
 

@@ -1239,6 +1239,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Game Manager (HQ)
       objectReference: {fileID: 0}
+    - target: {fileID: 8255719816419717928, guid: d308713c32451254085925853f7e3be7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Base
+      objectReference: {fileID: 0}
     - target: {fileID: 2021378874649731403, guid: d308713c32451254085925853f7e3be7,
         type: 3}
       propertyPath: scoreUI
