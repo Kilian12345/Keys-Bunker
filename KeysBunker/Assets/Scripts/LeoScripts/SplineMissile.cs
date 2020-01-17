@@ -96,7 +96,8 @@ public class SplineMissile : MonoBehaviour
     private void CheckExploding()
     {
         if (IsExploding)
-        { 
+        {
+            print("yeet");
             float value = spriteRenderer.material.GetFloat("_Cutoff");
             spriteRenderer.material.SetFloat("_Cutoff", value - 0.1f);
 
@@ -166,7 +167,7 @@ public class SplineMissile : MonoBehaviour
             StartCoroutine(FadeIn(audioSource, audioFadeInDuration));
         }
 
-        if (other.gameObject.tag == "Base") // && isDestroyable
+        if (other.gameObject.tag == "Base" && isDestroyable)
         {
             IsExploding = true;
         }

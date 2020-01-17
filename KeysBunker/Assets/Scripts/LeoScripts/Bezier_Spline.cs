@@ -46,7 +46,7 @@ public class Bezier_Spline : MonoBehaviour
         SpawnNodes();
         GenerateSpline();
         GeneratePathQueue();
-        minimumNodeAmount = nodeQueue.Count - (nodeQueue.Count-2);
+        minimumNodeAmount = nodeQueue.Count - (nodeQueue.Count-10);
     }
 
     void Update()
