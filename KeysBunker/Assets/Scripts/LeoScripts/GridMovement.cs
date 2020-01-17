@@ -42,11 +42,12 @@ public class GridMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (TestArduinoV2.targeted)
         {
             collision.gameObject.tag = "TARGETED";
             SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
             tileSprite.enabled = true;
+            TestArduinoV2.targeted = false;
         }
     }
 
