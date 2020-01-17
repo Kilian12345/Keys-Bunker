@@ -170,7 +170,7 @@ public class ArduinoMissileController : MonoBehaviour
 
     public void Respawn()
     {
-        GameObject explosion = Instantiate(particles, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(particles, missile.transform.position, Quaternion.identity);
         Destroy(explosion, 2f);
         rb.velocity = Vector3.zero;
 

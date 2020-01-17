@@ -93,4 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef674ecdda71a9408f3615161be323b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  growth: 0.005
+  growth: 4
+  mat: {fileID: 2100000, guid: 9ed4046f876c53b43833c3e4f22b11b1, type: 2}
+  camMat: {fileID: 2100000, guid: 74de2e1fbe5d9e54f9cf3dc19031dcd3, type: 2}
