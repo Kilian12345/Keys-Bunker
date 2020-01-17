@@ -46,7 +46,7 @@ public class GridMovement : MonoBehaviour
         {
             collision.gameObject.tag = "TARGETED";
             SpriteRenderer tileSprite = collision.gameObject.GetComponent<SpriteRenderer>();
-            tileSprite.enabled = true;
+            tileSprite.enabled = true; 
             TestArduinoV2.targeted = false;
         }
     }

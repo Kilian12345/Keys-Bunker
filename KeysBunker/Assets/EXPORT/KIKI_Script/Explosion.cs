@@ -12,13 +12,16 @@ public class Explosion : MonoBehaviour
     public Material camMat; // CRT
     Camera cam;
 
+    BlitCRT blit;
+
     bool doneOnce = false;
+    bool doneOnce2 = false;
 
     // Start is called before the first frame update
     void Start()
     {
         //mat = GetComponent<Material>();
-        cam = FindObjectOfType<Camera>();
+        blit = FindObjectOfType<BlitCRT>();
         //camMat = FindObjectOfType<Camera>().GetComponent<Material>();
 
         Vector3 trans = new Vector3(transform.localScale.x, transform.localScale.y, transform.localScale.z);
@@ -37,8 +40,12 @@ public class Explosion : MonoBehaviour
     {
         value = mat.GetFloat("_Value");
 
-        camMat.SetFloat("_CenterX", transform.localPosition.x);
-        camMat.SetFloat("_CenterY", transform.localPosition.y);
+        if (doneOnce2 == false)
+        { 
+            blit.isActive = true;
+            blit.pos = new Vector2(transform.localScale.x, transform.localScale.y);
+            doneOnce2 = true; 
+        }
 
         if (transform.localScale.x <= 45.0)
         {

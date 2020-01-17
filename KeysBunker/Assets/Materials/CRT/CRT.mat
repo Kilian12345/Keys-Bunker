@@ -63,8 +63,8 @@ Material:
     - _Amount: 0
     - _Br: 65
     - _BumpScale: 1
-    - _CenterX: -0.39302525
-    - _CenterY: 14.201641
+    - _CenterX: 0
+    - _CenterY: 0
     - _Contrast: 4.9
     - _Cutoff: 0.5
     - _Density: 3
