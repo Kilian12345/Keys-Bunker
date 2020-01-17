@@ -41,7 +41,7 @@ public class TestArduinoV2 : MonoBehaviour
             try
             {
                 int num = sp.ReadByte();
-                //print(num);
+                print(num);
 
                 numCheck(num);
 
@@ -56,6 +56,11 @@ public class TestArduinoV2 : MonoBehaviour
 
     void numCheck(int n)
     {
+        if (n == 6)
+        {
+            targeted = true;
+        }
+
         // Wheel 1 Input
 
         if (n == 1 || n == 2)
@@ -89,11 +94,6 @@ public class TestArduinoV2 : MonoBehaviour
         {
             wheel2CurNum = 0;
         } 
-
-        if (n == 6)
-        {
-            targeted = true;
-        }
     }
 
     void Movement()

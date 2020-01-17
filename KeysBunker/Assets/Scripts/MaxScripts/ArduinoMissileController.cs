@@ -63,7 +63,7 @@ public class ArduinoMissileController : MonoBehaviour
             {
                 int value = sp.ReadByte();
 
-                print(value);
+                //print(value);
 
                 //missile controls
 

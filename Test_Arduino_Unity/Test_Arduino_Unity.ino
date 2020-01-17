@@ -3,7 +3,7 @@
  int button03 = 7;
  int button04 = 5;
 
- int pushButton = 12;
+ int pushButton = 2;
 
  int buttonState1 = 0;
  int buttonState2 = 0;
